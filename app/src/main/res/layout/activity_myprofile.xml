@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tex"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/myprofile"
+    android:layoutDirection="ltr"
+    tools:context="com.ariel.healthbit.myprofile">
+
+
+    <TextView
+        android:id="@+id/myprofile_fullname"
+        android:layout_width="208dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="179dp"
+        android:layout_marginLeft="179dp"
+        android:gravity="left"
+        android:text="FullName: \n "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/myprofile_BMI"
+        app:layout_constraintStart_toStartOf="@+id/myprofile_BMI"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <TextView
+        android:id="@+id/myprofile_BMI"
+        android:layout_width="122dp"
+        android:layout_height="114dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/roundbtn"
+        android:gravity="center"
+        android:text="my BMI: \n \n"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarMYPROFILE"
+        android:layout_width="404dp"
+        android:layout_height="49dp"
+        android:background="@color/toolbar"
+        android:layoutDirection="ltr"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:subtitleTextColor="@color/black"
+        app:titleTextColor="@color/black" />
+
+    <TextView
+        android:id="@+id/myprofile_date"
+        android:layout_width="183dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="11dp"
+        android:gravity="left"
+        android:text="Date: \n "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47" />
+
+    <TextView
+        android:id="@+id/myprofile_mail"
+        android:layout_width="214dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
+        android:gravity="left"
+        android:text="Mail: \n "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/myprofile_BMI"
+        app:layout_constraintStart_toStartOf="@+id/myprofile_BMI"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.219" />
+
+    <TextView
+        android:id="@+id/myprofile_height"
+        android:layout_width="182dp"
+        android:layout_height="55dp"
+        android:gravity="left"
+        android:text="My Height: \n "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

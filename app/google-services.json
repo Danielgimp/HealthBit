@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "857120578588",
+    "firebase_url": "https://healthbit-dfe3c.firebaseio.com",
+    "project_id": "healthbit-dfe3c",
+    "storage_bucket": "healthbit-dfe3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857120578588:android:9d206218555aeecff693d9",
+        "android_client_info": {
+          "package_name": "com.ariel.healthbit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857120578588-uv42g63c2rkcrdg8aooprlmr7e6jt9l2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ariel.healthbit",
+            "certificate_hash": "d780cb13bc0095aef1cf0e67e30ba17ced2b8681"
+          }
+        },
+        {
+          "client_id": "857120578588-apue8jmfeathrrf9vf2v91uggc9s3ba8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRxqEHcPUJfoGZxPhy6Ey1aVGwZt-TfKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857120578588-apue8jmfeathrrf9vf2v91uggc9s3ba8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

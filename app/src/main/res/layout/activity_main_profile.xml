@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="@drawable/main"
+    tools:context="com.ariel.healthbit.MainProfile">
+
+    <Button
+        android:id="@+id/main_store"
+        android:layout_width="107dp"
+        android:layout_height="105dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:text="store"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.731" />
+
+    <Button
+        android:id="@+id/main_tips"
+        android:layout_width="107dp"
+        android:layout_height="105dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:text="tips"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.731" />
+
+    <Button
+        android:id="@+id/main_dailyact"
+        android:layout_width="107dp"
+        android:layout_height="105dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:text="daily activity"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.479" />
+
+    <Button
+        android:id="@+id/main_myprofile"
+        android:layout_width="107dp"
+        android:layout_height="105dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:text="my profile"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.222" />
+
+    <Button
+        android:id="@+id/mainprofile_logout"
+        android:layout_width="111dp"
+        android:layout_height="56dp"
+        android:text="@string/log_out"
+        android:textStyle="normal|bold|italic"
+        app:backgroundTint="@color/button"
+        app:iconPadding="18dp"
+        app:iconTintMode="multiply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.997"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarMainProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar"
+        android:layoutDirection="ltr"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:subtitleTextColor="@color/white"
+        app:titleTextColor="@color/white" />
+
+    <TextView
+        android:id="@+id/mainprofile_hello"
+        android:layout_width="143dp"
+        android:layout_height="27dp"
+        android:text="hello"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <Button
+        android:id="@+id/main_dailyMenu"
+        android:layout_width="107dp"
+        android:layout_height="105dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:text="daily menu"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.222" />
+
+    <Button
+        android:id="@+id/main_BMI"
+        android:layout_width="107dp"
+        android:layout_height="105dp"
+        android:background="@drawable/roundbtn"
+        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:text="BMI calc"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.479" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HealthBit</string>
+    <string name="welcome_to_heartbit_application">Welcome to HeartBit Application</string>
+    <string name="log_out">log out</string>
+    <string name="hello_name">hello name</string>
+    <string name="weight">WEIGHT</string>
+    <string name="height">HEIGHT</string>
+    <string name="bmi">BMI</string>
+</resources>
