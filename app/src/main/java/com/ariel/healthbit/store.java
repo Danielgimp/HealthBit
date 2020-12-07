@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,11 +27,6 @@ public class store extends AppCompatActivity {
 
     storeProduct product1,product2,product3;
 
-    static int currPage=1,tracker,NumberOfPages,arraySize=0;
-    TextView txtName,txtDescription,txtkCal,txtPrice,txtStock;
-    Button addToCart1,addToCart2,addToCart3,nextPage,prevPage,stockUp;
-    ArrayList<storeProduct> products =new ArrayList<storeProduct>();
-    FirebaseAuth fb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         product1=new storeProduct();
@@ -39,16 +36,6 @@ public class store extends AppCompatActivity {
         setContentView(R.layout.activity_store);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarSTORE);
         setSupportActionBar(toolbar);
-        stockUp= (Button)findViewById(R.id.btn_stockup);
-        stockUp.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                DatabaseReference ref1= FirebaseDatabase.getInstance().getReference("Store");
-                ref1.child(product1.getName()).setValue(product1);
-                ref1.child(product2.getName()).setValue(product2);
-                ref1.child(product3.getName()).setValue(product3);
-            }
-        });
 
         //add all products from "Store" on Firebase to an array list
         DatabaseReference productsRefernce= FirebaseDatabase.getInstance().getReference("Store");
@@ -72,34 +59,46 @@ public class store extends AppCompatActivity {
                     data.add(product);
 
                 }
-                for(int i=0;i<3;i++)
+                int productsAmount=data.size();
+                final LinearLayout lm = (LinearLayout) findViewById(R.id.linearLayout);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                for(int i=0;i<productsAmount;i++)
                 {
-                    String textName="name"+(i+1);
-                    int textViewID = getResources().getIdentifier(textName, "id", getPackageName());
-                    txtName=(TextView)findViewById(textViewID);
 
-                    String textDescription="description"+(i+1);
-                    int textDescriptionID = getResources().getIdentifier(textDescription, "id", getPackageName());
-                    txtDescription=(TextView)findViewById(textDescriptionID);
+                    LinearLayout ll = new LinearLayout(getBaseContext());
+                    ll.setOrientation(LinearLayout.VERTICAL);
 
-                    String textkCal="kcal"+(i+1);
-                    int textkCalID = getResources().getIdentifier(textkCal, "id", getPackageName());
-                    txtkCal=(TextView)findViewById(textkCalID);
+                    TextView productName = new TextView(getBaseContext());
+                    productName.setText("Product name: "+data.get(i).getName());
+                    ll.addView(productName);
 
-                    String textPrice="price"+(i+1);
-                    int textPriceID = getResources().getIdentifier(textPrice, "id", getPackageName());
-                    txtPrice=(TextView)findViewById(textPriceID);
+                    TextView kcal = new TextView(getBaseContext());
+                    kcal.setText("kCal: "+data.get(i).getKcal());
+                    ll.addView(kcal);
 
-                    String textStock="stock"+(i+1);
-                    int textStockID = getResources().getIdentifier(textStock, "id", getPackageName());
-                    txtStock=(TextView)findViewById(textStockID);
+                    TextView price = new TextView(getBaseContext());
+                    price.setText("Price is: "+data.get(i).getPrice() + " ILS");
+                    ll.addView(price);
 
-                    txtName.setText("Product Name: "+data.get(i).getName());
-                    txtDescription.setText("Description: "+data.get(i).getSubType());
-                    txtkCal.setText("kCal: "+Double.toString(data.get(i).getKcal()));
-                    txtPrice.setText("Price: "+Double.toString(data.get(i).getPrice()));
-                    txtStock.setText("In Stock: "+Integer.toString(data.get(i).UnitsInStock));
+                    TextView subType = new TextView(getBaseContext());
+                    subType.setText("Description: "+data.get(i).getSubType());
+                    ll.addView(subType);
+
+                    // Create Button
+                    final Button btn = new Button(getBaseContext());
+                    // Give button an ID
+                    btn.setId(i+1);
+                    btn.setText("Add To Cart");
+                    // set the layoutParams on the button
+                    btn.setLayoutParams(params);
+                    //Add button to LinearLayout
+                    ll.addView(btn);
+                    //Add button to LinearLayout defined in XML
+                    lm.addView(ll);
                 }
+
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError)
