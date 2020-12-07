@@ -25,13 +25,10 @@ import java.util.Map.Entry;
 
 public class store extends AppCompatActivity {
 
-    storeProduct product1,product2,product3;
+    storeProduct product1,product2,product3,product4,product5,product6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        product1=new storeProduct();
-        product2=new storeProduct("Protein Bars",500,100,"Bubu");
-        product3=new storeProduct("Protein Powder",200,100,"Gugu");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarSTORE);
