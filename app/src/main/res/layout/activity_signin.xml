@@ -30,6 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="forgot password?"
+        android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

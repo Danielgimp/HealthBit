@@ -20,7 +20,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/btnStock3"
+        android:id="@+id/stock3"
         android:layout_width="91dp"
         android:layout_height="26dp"
         android:text="In Stock:"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.593" />
 
     <TextView
-        android:id="@+id/description2"
+        android:id="@+id/description3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description:"
@@ -49,15 +49,16 @@
         android:id="@+id/btnCart6"
         android:layout_width="104dp"
         android:layout_height="62dp"
-        android:layout_marginTop="548dp"
         android:text="Add to Cart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759" />
 
     <TextView
-        android:id="@+id/price2"
+        android:id="@+id/price3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
@@ -70,7 +71,7 @@
         app:layout_constraintVertical_bias="0.774" />
 
     <TextView
-        android:id="@+id/kCal3"
+        android:id="@+id/kcal3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="kCal:"
@@ -83,7 +84,7 @@
         app:layout_constraintVertical_bias="0.731" />
 
     <TextView
-        android:id="@+id/name2"
+        android:id="@+id/name3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ProductName"
@@ -108,7 +109,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/price2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
@@ -121,18 +122,19 @@
         app:layout_constraintVertical_bias="0.528" />
 
     <Button
-        android:id="@+id/btnCart5"
+        android:id="@+id/btnCart2"
         android:layout_width="104dp"
         android:layout_height="62dp"
-        android:layout_marginTop="360dp"
         android:text="Add to Cart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.508" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/name2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ProductName"
@@ -145,7 +147,7 @@
         app:layout_constraintVertical_bias="0.388" />
 
     <TextView
-        android:id="@+id/kCal2"
+        android:id="@+id/kcal2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="kCal:"
@@ -172,7 +174,7 @@
         app:titleTextColor="@color/white" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/description2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description:"
@@ -185,9 +187,9 @@
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/btnStock2"
-        android:layout_width="91dp"
-        android:layout_height="26dp"
+        android:id="@+id/stock2"
+        android:layout_width="98dp"
+        android:layout_height="25dp"
         android:text="In Stock:"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -198,9 +200,9 @@
         app:layout_constraintVertical_bias="0.343" />
 
     <Button
-        android:id="@+id/btnCart4"
-        android:layout_width="122dp"
-        android:layout_height="47dp"
+        android:id="@+id/btnPrevPage"
+        android:layout_width="168dp"
+        android:layout_height="59dp"
         android:text="Previous Page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -262,7 +264,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/Price"
+        android:id="@+id/price1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
@@ -275,18 +277,19 @@
         app:layout_constraintVertical_bias="0.273" />
 
     <Button
-        android:id="@+id/btnCart"
+        android:id="@+id/btnCart1"
         android:layout_width="104dp"
         android:layout_height="62dp"
-        android:layout_marginTop="164dp"
         android:text="Add to Cart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.921"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.237" />
 
     <TextView
-        android:id="@+id/kCal"
+        android:id="@+id/kcal1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="kCal:"
@@ -299,7 +302,7 @@
         app:layout_constraintVertical_bias="0.229" />
 
     <TextView
-        android:id="@+id/btnStock"
+        android:id="@+id/stock1"
         android:layout_width="91dp"
         android:layout_height="26dp"
         android:text="In Stock:"
@@ -312,7 +315,7 @@
         app:layout_constraintVertical_bias="0.085" />
 
     <TextView
-        android:id="@+id/Description"
+        android:id="@+id/description1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description:"
@@ -325,7 +328,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <TextView
-        android:id="@+id/Name"
+        android:id="@+id/name1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ProductName"
@@ -338,9 +341,9 @@
         app:layout_constraintVertical_bias="0.132" />
 
     <Button
-        android:id="@+id/btnCart3"
-        android:layout_width="122dp"
-        android:layout_height="47dp"
+        android:id="@+id/btnNextPage"
+        android:layout_width="130dp"
+        android:layout_height="58dp"
         android:text="Next Page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
