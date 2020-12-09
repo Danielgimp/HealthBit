@@ -13,7 +13,6 @@ public class Order {
     String OrderUID;
     Map<String, Integer> itemQuantity;
     double totalPrice;
-    storeProduct product;
 
     public Order(String ID){
        this.OrderUID=ID;
@@ -21,13 +20,6 @@ public class Order {
        this.totalPrice=0;
     }
 
-    public storeProduct getProduct() {
-        return product;
-    }
-
-    public void setProduct(storeProduct product) {
-        this.product = product;
-    }
 
     public void setOrderUID(String orderUID) {
         OrderUID = orderUID;

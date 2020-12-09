@@ -121,7 +121,7 @@ public class store extends AppCompatActivity {
     View.OnClickListener handleOnClick(final Button currBtn,ArrayList<storeProduct>data,Order currOrder) {
         return new View.OnClickListener() {
             public void onClick(View v) {
-                String productName=data.get(currBtn.getId()).getName();
+                String productName=productUID.get(currBtn.getId());
                 currOrder.setOrderUID(productName);
                 currOrder.FillProductInMap(productName);
                 int OrdersNumber=currOrder.getItemQuantity(productName);
