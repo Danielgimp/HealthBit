@@ -3,6 +3,7 @@ package com.ariel.healthbit;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -126,6 +127,7 @@ public class store extends AppCompatActivity {
                 currOrder.FillProductInMap(productName);
                 int OrdersNumber=currOrder.getItemQuantity(productName);
                 currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
+
             }
         };
     }
@@ -136,6 +138,8 @@ public class store extends AppCompatActivity {
             public void onClick(View v) {
                 refOrders= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).child("Orders");
                 refOrders.child(fb.getInstance().getUid()).setValue(currOrder.itemQuantity);
+                Intent myIntent = new Intent(getApplicationContext(), cart_activity.class);
+                startActivity(myIntent);
             }
         });
     }
