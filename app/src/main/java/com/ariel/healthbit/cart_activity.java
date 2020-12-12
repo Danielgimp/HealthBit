@@ -90,7 +90,6 @@ public class cart_activity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<String, HashMap> td= (Map <String, HashMap>) dataSnapshot.getValue();
-                //Collection<HashMap> entry = td.values();
                 for (Map.Entry<String, HashMap> entry : td.entrySet()) {
                     String OrderDetails = entry.getValue().toString();
                     String[] splitData=OrderDetails.split("=");
