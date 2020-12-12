@@ -21,14 +21,18 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static android.content.pm.PackageInstaller.EXTRA_SESSION_ID;
+
 public class cart_activity extends AppCompatActivity {
-    DatabaseReference refUser,refOrders,refDetails;
+    DatabaseReference refUser,refOrders,refUserInfo;
     Double totalPrice= Double.valueOf(0);
     TextView fullname,purchases;
     FirebaseAuth fb;
     ArrayList<storeProduct>data=new ArrayList<storeProduct>();
     HashMap<String,String> name_UID_matches=new HashMap<String,String>();
     String purchaseInfo="";
+    Bundle extras = getIntent().getExtras();
+    String OrderID=extras.getString("EXTRA_SESSION_ID");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class cart_activity extends AppCompatActivity {
 
 
         DatabaseReference productsRefernce= FirebaseDatabase.getInstance().getReference("products");
+        refUserInfo=FirebaseDatabase.getInstance().getReference(fb.getInstance().getUid()).child("Orders");
         ValueEventListener productsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -85,7 +90,8 @@ public class cart_activity extends AppCompatActivity {
         };
         productsRefernce.addValueEventListener(productsListener);
 
-        refOrders= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).child("Orders");
+        refOrders= FirebaseDatabase.getInstance().getReference("Orders").child("-MOLr8p3qmRzUoWmtwow");
+
         ValueEventListener ordersListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -100,7 +106,7 @@ public class cart_activity extends AppCompatActivity {
                     double currPrice=data.get(IndexInArr).getPrice()*Quantity;
                     totalPrice+=currPrice;
 
-                    purchaseInfo.concat("The Following Items are in the Cart: \n"+"Name: " + data.get(IndexInArr).getName() + "\n" + "Orders ordered: " + Quantity +"\n" + "Price for each unit: " +data.get(IndexInArr).getPrice() +"\n" + "Total Price for this product: "+currPrice+ "\n\n");
+                    purchaseInfo+="The Following Items are in the Cart: \n"+"Name: " + data.get(IndexInArr).getName() + "\n" + "Amount: " + Quantity +"\n" + "Price for each unit: " +data.get(IndexInArr).getPrice() +"\n" + "Total Price for this product: "+currPrice+ "\n\n";
 
                 }
                 String TotalPrice="Total for the order is: "+totalPrice;

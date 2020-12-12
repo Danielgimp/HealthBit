@@ -6,80 +6,82 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Order {
-    String OrderUID;
-    Map<String, Integer> itemQuantity;
+    String userUID;
+    ArrayList<productOrder> itemQuantity;
     double totalPrice;
 
-    public Order(String ID){
-       this.OrderUID=ID;
-       this.itemQuantity=new HashMap<>();
+    public Order(String userUID){
+       this.userUID=userUID;
+       this.itemQuantity=new ArrayList<productOrder>();
        this.totalPrice=0;
     }
 
-
-    public void setOrderUID(String orderUID) {
-        OrderUID = orderUID;
+    public Order(String userUID,ArrayList<productOrder> itemQuantity,double totalPrice){
+        this.userUID=userUID;
+        this.itemQuantity=itemQuantity;
+        this.totalPrice=totalPrice;
     }
 
-    public void FillProductInMap(String name)
+
+
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
+    }
+
+    public String getUserUID() {
+        return userUID;
+    }
+
+    public void FillProductInMap(String name,double price)
     {
-        if(!this.itemQuantity.containsKey(name))
+        boolean flag=false;
+        int index=-1;
+        for(int i=0;i<itemQuantity.size();i++)
         {
-            itemQuantity.put(name,1);
+            if(itemQuantity.get(i).getItem()==name)
+            {
+                itemQuantity.get(i).setAmount(itemQuantity.get(i).getAmount()+1);
+                itemQuantity.get(i).setPrice(itemQuantity.get(i).getPrice()+price);
+                flag=true;
+                index=i;
+            }
+
         }
-        else
+        if(!flag)
         {
-            itemQuantity.put(name,itemQuantity.get(name)+1);
+          productOrder prd=new productOrder(name,1, price);
+          itemQuantity.add(prd);
         }
+        totalPrice();
     }
 
     public int getItemQuantity(String productName) {
-        for(Map.Entry<String,Integer> entry : itemQuantity.entrySet())
+        for(int i=0;i<itemQuantity.size();i++)
         {
-            if(entry.getKey()==productName)
+            if(itemQuantity.get(i).getItem()==productName)
             {
-                return entry.getValue();
+                return itemQuantity.get(i).getAmount();
             }
 
         }
         return 0;
     }
 
-    public double getTotal(){
-        for (Map.Entry<String,Integer> entry : itemQuantity.entrySet())
-        {
-            DatabaseReference productsRefernce= FirebaseDatabase.getInstance().getReference("products");
-            ValueEventListener postListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Map<String, storeProduct> td = (Map<String, storeProduct>) dataSnapshot.getValue();
-                    for (Map.Entry<String, storeProduct> innerEntry : td.entrySet()) {
-                        HashMap nana=innerEntry.getValue();
-                        String name= (String) nana.get("name");
-                        Long Lprice=(Long) nana.get("price");
-                        double price=Lprice.doubleValue();
-                        if(entry.getKey()==name)
-                        {
-                            totalPrice+=entry.getValue()*price;
-                        }
-                    }
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError)
-                {
-
-                }
-            };
-            productsRefernce.addValueEventListener(postListener);
+    public void totalPrice()
+    {
+        double tPrice=0;
+        for(int i=0;i<itemQuantity.size();i++) {
+            tPrice+=itemQuantity.get(i).getPrice();
         }
+        this.totalPrice=tPrice;
 
-
-        return totalPrice;
     }
+
 
 
 

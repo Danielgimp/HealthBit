@@ -29,8 +29,8 @@ public class store extends AppCompatActivity {
     storeProduct product1,product2,product3;
     Button gotoCart;
     ArrayList<String> productUID=new ArrayList<String>();
-    Order currOrder =new Order("1");
-    FirebaseAuth ref=FirebaseAuth.getInstance();
+    ArrayList<Double> prices=new ArrayList<Double>();
+    Order currOrder=new Order("1");
     DatabaseReference refUser,refOrders;
     FirebaseAuth fb;
     @Override
@@ -59,6 +59,7 @@ public class store extends AppCompatActivity {
                     String name= (String) nana.get("name");
                     String subType= (String) nana.get("description");
                     productUID.add((String) entry.getKey());
+                    prices.add(price);
                     product=new storeProduct(name,kcal,price,subType);
                     data.add(product);
 
@@ -104,6 +105,7 @@ public class store extends AppCompatActivity {
 
                     lm.addView(ll);
                     buttons.add(btn);
+
                     buttons.get(i).setOnClickListener(handleOnClick(buttons.get(i),data,currOrder));
                 }
 
@@ -123,8 +125,8 @@ public class store extends AppCompatActivity {
         return new View.OnClickListener() {
             public void onClick(View v) {
                 String productName=productUID.get(currBtn.getId());
-                currOrder.setOrderUID(productName);
-                currOrder.FillProductInMap(productName);
+                double price=prices.get(currBtn.getId());
+                currOrder.FillProductInMap(productName,price);
                 int OrdersNumber=currOrder.getItemQuantity(productName);
                 currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
 
@@ -132,13 +134,20 @@ public class store extends AppCompatActivity {
         };
     }
 
-    private void setOnClick(final Button btn, final Order currOrder){
+    public void setOnClick(final Button btn, final Order currOrder){
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refOrders= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).child("Orders");
-                refOrders.child(fb.getInstance().getUid()).setValue(currOrder.itemQuantity);
-                Intent myIntent = new Intent(getApplicationContext(), cart_activity.class);
+                refUser= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).child("Orders").push();
+                refUser.setValue("true");
+                String orderUID = refUser.getKey();
+                refOrders=FirebaseDatabase.getInstance().getReference("Orders").child(orderUID);
+                currOrder.setUserUID(fb.getInstance().getUid());
+                currOrder.totalPrice();
+                refOrders.setValue(currOrder);
+                refOrders.child("Proucts").setValue(currOrder.itemQuantity);
+                Intent myIntent = new Intent(getBaseContext(), cart_activity.class);
+                myIntent.putExtra("orderUID",orderUID);
                 startActivity(myIntent);
             }
         });
