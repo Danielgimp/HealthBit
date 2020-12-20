@@ -25,6 +25,14 @@ public class Order
 
     ArrayList<productOrder> itemQuantity;
 
+    public Order(){};
+    public Order(Order order)
+    {
+        this.userUID=order.userUID;
+        this.totalPrice=order.totalPrice;
+        this.itemQuantity=order.itemQuantity;
+    }
+
     public Order(String userUID){
        this.userUID=userUID;
        this.itemQuantity=new ArrayList<productOrder>();
@@ -90,7 +98,7 @@ public class Order
         double tPrice=0;
         for(int i=0;i<itemQuantity.size();i++)
         {
-            tPrice+=itemQuantity.get(i).getPrice();
+            tPrice+=itemQuantity.get(i).getPrice()*itemQuantity.get(i).getAmount();
         }
         this.totalPrice=tPrice;
 

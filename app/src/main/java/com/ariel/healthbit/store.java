@@ -60,7 +60,7 @@ public class store extends AppCompatActivity {
                     String subType= (String) nana.get("description");
                     productUID.add((String) entry.getKey());
                     prices.add(price);
-                    product=new storeProduct(name,kcal,price,subType);
+                    product=new storeProduct(name,kcal,price,subType,nitsInStock);
                     data.add(product);
 
                 }
@@ -89,7 +89,11 @@ public class store extends AppCompatActivity {
 
                     TextView subType = new TextView(getBaseContext());
                     subType.setText("Description: "+data.get(i).getSubType());
-                    ll.addView(subType,params);
+                    ll.addView(subType);
+
+                    TextView inStock=new TextView(getBaseContext());
+                    inStock.setText("Currently In Stock: "+data.get(i).UnitsInStock);
+                    ll.addView(inStock,params);
 
                     // Create Button
                     final Button btn = new Button(getBaseContext());
@@ -139,12 +143,16 @@ public class store extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 refUser= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).child("Orders").push();
+                String OrderUID=refUser.getKey();
                 refUser.setValue("true");
                 String orderUID = refUser.getKey();
+                Intent goToCart=new Intent(store.this,cart_activity.class);
+                goToCart.putExtra("Unique Order ID",orderUID);
                 refOrders=FirebaseDatabase.getInstance().getReference("Orders").child(orderUID);
                 currOrder.setUserUID(fb.getInstance().getUid());
                 currOrder.setTotalPrice(0);
                 refOrders.setValue(currOrder);
+                startActivity(goToCart);
             }
         });
     }

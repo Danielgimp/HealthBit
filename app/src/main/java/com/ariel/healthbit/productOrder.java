@@ -5,6 +5,12 @@ public class productOrder {
     int amount;
     double price=0;
 
+    public productOrder(productOrder prd) {
+        this.Item = prd.getItem();
+        this.amount = prd.getAmount();
+        this.price=prd.getPrice();
+    }
+    public productOrder(){};
 
     public double getPrice() {
         return price;
