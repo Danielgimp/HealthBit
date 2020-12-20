@@ -10,10 +10,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Order {
+public class Order
+{
     String userUID;
-    ArrayList<productOrder> itemQuantity;
     double totalPrice;
+
+    public ArrayList<productOrder> getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public void setItemQuantity(ArrayList<productOrder> itemQuantity) {
+        this.itemQuantity = itemQuantity;
+    }
+
+    ArrayList<productOrder> itemQuantity;
 
     public Order(String userUID){
        this.userUID=userUID;
@@ -57,7 +67,6 @@ public class Order {
           productOrder prd=new productOrder(name,1, price);
           itemQuantity.add(prd);
         }
-        totalPrice();
     }
 
     public int getItemQuantity(String productName) {
@@ -72,10 +81,15 @@ public class Order {
         return 0;
     }
 
-    public void totalPrice()
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double price)
     {
         double tPrice=0;
-        for(int i=0;i<itemQuantity.size();i++) {
+        for(int i=0;i<itemQuantity.size();i++)
+        {
             tPrice+=itemQuantity.get(i).getPrice();
         }
         this.totalPrice=tPrice;

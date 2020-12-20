@@ -1,8 +1,11 @@
 package com.ariel.healthbit;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,11 +18,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,6 +40,7 @@ public class signup_next extends AppCompatActivity
     TextView birthdate_textview;
     ProgressBar prog;
     FirebaseAuth aut;
+    DatabaseReference ref;
      @Override
     protected void onCreate(Bundle savedInstanceState)
      {
@@ -126,13 +133,13 @@ public class signup_next extends AppCompatActivity
                 prog.setVisibility(View.VISIBLE);
                 //create Detail's object and add it to db
                 Details d=new Details(h, w, new Date(year-1900, month-1, day), gender);
-                DatabaseReference ref= FirebaseDatabase.getInstance().getReference("users");
+                ref= FirebaseDatabase.getInstance().getReference("users");
                 ref.child(aut.getInstance().getUid()).child("details").setValue(d);
+              //  ref.child(aut.getInstance().getUid()).child("details").child("weights").push().setValue((double)w);
                 prog.setVisibility(View.GONE);
                 //open main menu
                 Intent myIntent = new Intent(getApplicationContext(), MainProfile.class);
                 startActivity(myIntent);
-
             }
 
         });
@@ -145,5 +152,53 @@ public class signup_next extends AppCompatActivity
     {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
+    }
+    public void onBackPressed()
+    {
+            //show alert message: press yes- delete account, press no - cancel the alert dialog.
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Are you sure you want to exit?");
+            builder.setMessage("Your registration is not complete, press 'no' to complete\n");
+            builder.setCancelable(true);
+
+            builder.setPositiveButton
+                    (
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id)
+                                {
+                                    String uid=aut.getInstance().getCurrentUser().getUid();
+                                    aut.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful())
+                                            {
+                                                FirebaseAuth.getInstance().signOut();
+                                                DatabaseReference refDel=FirebaseDatabase.getInstance().getReference("users");
+                                                refDel.child(uid).removeValue();
+                                                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                                                startActivity(myIntent);
+
+                                            }
+                                        }
+                                    });
+
+                                }
+                            });
+
+            builder.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            dialog.cancel();
+                        }
+                    });
+
+
+            AlertDialog alert = builder.create();
+            alert.show();
+
+                return;
     }
 }

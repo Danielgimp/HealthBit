@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
 {
+    public static String uid = null;  // Erez add this line 1
     Toolbar toolbar;
     Button signupbutton,signinbutton;
     FirebaseUser user;
@@ -22,13 +23,14 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.upload);
         setSupportActionBar(toolbar);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         if(user != null)
         {
+            uid = user.getUid().toString(); // Erez add this line 2
             Intent myIntent = new Intent(getApplicationContext(),MainProfile.class);
             startActivity(myIntent);
             this.finish();
@@ -60,5 +62,10 @@ public class MainActivity extends AppCompatActivity
     {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
+    }
+    @Override
+    public void onBackPressed()
+    {
+        finishAffinity();
     }
 }

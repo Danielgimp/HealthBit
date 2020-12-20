@@ -10,67 +10,82 @@
 
     <Button
         android:id="@+id/main_store"
-        android:layout_width="107dp"
-        android:layout_height="105dp"
+        android:layout_width="149dp"
+        android:layout_height="66dp"
         android:background="@drawable/roundbtn"
-        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:drawableLeft="@drawable/ic_store"
         android:text="store"
         android:textColor="#FFFFFF"
-        app:backgroundTint="@color/toolbar"
+        app:backgroundTint="#B9FFB7CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintVertical_bias="0.739" />
 
     <Button
         android:id="@+id/main_tips"
-        android:layout_width="107dp"
-        android:layout_height="105dp"
+        android:layout_width="158dp"
+        android:layout_height="64dp"
         android:background="@drawable/roundbtn"
-        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:drawableLeft="@drawable/ic_tips"
         android:text="tips"
         android:textColor="#FFFFFF"
-        app:backgroundTint="@color/toolbar"
+        app:backgroundTint="#B9FFB7CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintVertical_bias="0.88" />
 
     <Button
         android:id="@+id/main_dailyact"
-        android:layout_width="107dp"
-        android:layout_height="105dp"
+        android:layout_width="150dp"
+        android:layout_height="68dp"
         android:background="@drawable/roundbtn"
-        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:drawableLeft="@drawable/ic_activity"
         android:text="daily activity"
         android:textColor="#FFFFFF"
-        app:backgroundTint="@color/toolbar"
+        app:backgroundTint="#B9FFB7CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintHorizontal_bias="0.915"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.479" />
+        app:layout_constraintVertical_bias="0.885" />
 
     <Button
         android:id="@+id/main_myprofile"
-        android:layout_width="107dp"
-        android:layout_height="105dp"
-        android:background="@drawable/roundbtn"
-        android:drawableTop="@drawable/ic_baseline_group_24"
-        android:text="my profile"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
         android:textColor="#FFFFFF"
-        app:backgroundTint="@color/toolbar"
+        android:textSize="14sp"
+        app:backgroundTint="#DFCCCC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.084" />
+
+    <Button
+        android:id="@+id/main_setting"
+        android:layout_width="66dp"
+        android:layout_height="52dp"
+        android:drawableTop="@drawable/ic_baseline_settings_24"
+        android:text="setting"
+        android:textColor="#CCC8C8"
+        android:textSize="8sp"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/mainprofile_logout"
@@ -78,7 +93,7 @@
         android:layout_height="56dp"
         android:text="@string/log_out"
         android:textStyle="normal|bold|italic"
-        app:backgroundTint="@color/button"
+        app:backgroundTint="#B9FFB7CF"
         app:iconPadding="18dp"
         app:iconTintMode="multiply"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,11 +120,11 @@
 
     <TextView
         android:id="@+id/mainprofile_hello"
-        android:layout_width="143dp"
-        android:layout_height="27dp"
+        android:layout_width="192dp"
+        android:layout_height="45dp"
         android:text="hello"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
@@ -119,34 +134,50 @@
 
     <Button
         android:id="@+id/main_dailyMenu"
-        android:layout_width="107dp"
-        android:layout_height="105dp"
+        android:layout_width="146dp"
+        android:layout_height="71dp"
         android:background="@drawable/roundbtn"
-        android:drawableTop="@drawable/ic_baseline_group_24"
+        android:drawableLeft="@drawable/ic_menu"
         android:text="daily menu"
         android:textColor="#FFFFFF"
-        app:backgroundTint="@color/toolbar"
+        app:backgroundTint="#B9FFB7CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.737" />
 
     <Button
-        android:id="@+id/main_BMI"
-        android:layout_width="107dp"
-        android:layout_height="105dp"
+        android:id="@+id/updateItem"
+        android:layout_width="287dp"
+        android:layout_height="114dp"
         android:background="@drawable/roundbtn"
-        android:drawableTop="@drawable/ic_baseline_group_24"
-        android:text="BMI calc"
+        android:drawableLeft="@drawable/ic_weighttracker"
+        android:text="weight tracker"
         android:textColor="#FFFFFF"
-        app:backgroundTint="@color/toolbar"
+        app:backgroundTint="#B9FFB7CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.479" />
+        app:layout_constraintVertical_bias="0.278" />
+
+    <Button
+        android:id="@+id/newItem"
+        android:layout_width="252dp"
+        android:layout_height="90dp"
+        android:background="@drawable/roundbtn"
+        android:drawableLeft="@drawable/ic_baseline_calculate_24"
+        android:text="BMI calc"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#B9FFB7CF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.533" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

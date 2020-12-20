@@ -7,13 +7,12 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        vectorDrawables.useSupportLibrary = true
         applicationId "com.ariel.healthbit"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,10 +37,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.5.1'
     implementation 'com.firebase:firebase-client-android:2.5.0'
     implementation 'com.google.firebase:firebase-auth:20.0.0'
-    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.jjoe64:graphview:4.2.2'
     //implementation 'com.google.firebase:firebase-database'
    // implementation 'com.google.firebase:firebase-crashlytics'
     //implementation 'com.google.firebase:firebase-auth'

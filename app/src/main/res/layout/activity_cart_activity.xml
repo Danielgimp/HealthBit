@@ -42,17 +42,17 @@
             app:layout_constraintVertical_bias="0.116" />
 
         <TextView
-            android:id="@+id/OrdertxtView"
-            android:layout_width="375dp"
-            android:layout_height="264dp"
-            android:text="TextView"
+            android:id="@+id/cart_OrderId"
+            android:layout_width="282dp"
+            android:layout_height="51dp"
+            android:text="OrderId"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintHorizontal_bias="0.124"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.239" />
+            app:layout_constraintVertical_bias="0.176" />
 
         <Button
             android:id="@+id/button"

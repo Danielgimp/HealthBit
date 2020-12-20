@@ -13,11 +13,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthBit">
+        <activity
+            android:name=".activityOrders"
+            android:label="@string/title_activity_orders"
+            android:theme="@style/Theme.HealthBit.NoActionBar"></activity>
+        <activity
+            android:name=".adminMenu1"
+            android:label="@string/title_activity_admin_menu1"
+            android:theme="@style/Theme.HealthBit.NoActionBar" />
         <activity android:name=".cart_activity"></activity>
+        <activity android:name=".settingprofile" />
+        <activity android:name=".newProducts" />
+        <activity android:name=".updateprofile" />
+        <activity android:name=".weighttracker" />
         <activity android:name=".forgotpassword" />
+        <activity android:name=".updateProducts" />
         <activity android:name=".signup_next" />
         <activity android:name=".daily_activity" />
         <activity android:name=".dailymenu" />
+        <activity android:name=".list_menu_activity" />
+        <activity android:name=".list_menu_2Activity" />
         <activity android:name=".tips" />
         <activity android:name=".bmi_activity" />
         <activity android:name=".store" />

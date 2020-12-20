@@ -1,17 +1,14 @@
 package com.ariel.healthbit;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,29 +21,37 @@ import com.google.firebase.database.ValueEventListener;
 public class MainProfile extends AppCompatActivity
 {
    Toolbar toolbar;
-   Button logout,bmi,menu,act,tips,myprof,store;
+   Button logout,bmi,menu,act,tips,myprof,store,weightTracker,setting;
    TextView hello;
    DatabaseReference ref;
    FirebaseAuth fb;
+   FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_profile);
         ref=FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid());
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
+        if(user == null)
+        {
+            Intent myIntent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(myIntent);
+        }
         toolbar = (Toolbar) findViewById(R.id.toolbarMainProfile);
         setSupportActionBar(toolbar);
 
         hello=(TextView)findViewById(R.id.mainprofile_hello);
         ValueEventListener postListener = new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
                 User post = dataSnapshot.getValue(User.class);
-                hello.setText("hello "+post.name);
-                // ...
+                if(post!=null)
+                {
+                    hello.setText("hello " + post.name);
+                }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError)
             {
@@ -72,7 +77,6 @@ public class MainProfile extends AppCompatActivity
                 Intent myIntent = new Intent(getApplicationContext(), myprofile.class);
                 startActivity(myIntent);
             }
-
         });
 
         act = (Button) findViewById(R.id.main_dailyact); //move to the activity main
@@ -95,7 +99,7 @@ public class MainProfile extends AppCompatActivity
 
         });
 
-        bmi = (Button) findViewById(R.id.main_BMI);//move to the BMI activity
+        bmi = (Button) findViewById(R.id.newItem);//move to the BMI activity
         bmi.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view)
             {
@@ -120,6 +124,26 @@ public class MainProfile extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent myIntent = new Intent(getApplicationContext(), tips.class);
+                startActivity(myIntent);
+            }
+
+        });
+
+        weightTracker = (Button) findViewById(R.id.updateItem); //move to the tips activity
+        weightTracker.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view)
+            {
+                Intent myIntent = new Intent(getApplicationContext(), weighttracker.class);
+                startActivity(myIntent);
+            }
+
+        });
+
+        setting = (Button) findViewById(R.id.main_setting); //move to the tips activity
+        setting.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view)
+            {
+                Intent myIntent = new Intent(getApplicationContext(), settingprofile.class);
                 startActivity(myIntent);
             }
 

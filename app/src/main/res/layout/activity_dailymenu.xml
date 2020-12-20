@@ -23,4 +23,69 @@
         app:subtitleTextColor="@color/white"
         app:titleTextColor="@color/white" />
 
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Breakfast"
+        android:textAllCaps="false"
+        android:textSize="28sp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDAILYMENU"
+        tools:layout_editor_absoluteX="36dp" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Lunch"
+        android:textAllCaps="false"
+        android:textSize="28sp"
+        app:layout_constraintTop_toBottomOf="@+id/btn1"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Dinner"
+        android:textAllCaps="false"
+        android:textSize="28sp"
+        app:layout_constraintTop_toBottomOf="@+id/btn2"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Snacks"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/btn3"
+        tools:layout_editor_absoluteX="-1dp"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You Eat Today:"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn4"
+        app:layout_constraintVertical_bias="0.234" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-black"
+        android:text="100 Calorie"
+        android:textSize="46sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

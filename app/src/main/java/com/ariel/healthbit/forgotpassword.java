@@ -22,6 +22,11 @@ import com.google.firebase.auth.SignInMethodQueryResult;
 
 public class forgotpassword<toolbar> extends AppCompatActivity
 {
+    public static boolean emailvalidity(String email) //check email validity
+    {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(regex);
+    }
     Toolbar toolbar;
     EditText email;
     Button reset;
@@ -35,7 +40,7 @@ public class forgotpassword<toolbar> extends AppCompatActivity
         setContentView(R.layout.activity_forgotpassword);
         auth = FirebaseAuth.getInstance();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbarNextStep);
+        toolbar = (Toolbar) findViewById(R.id.toolbarPASSWORD);
         setSupportActionBar(toolbar);
 
         email=(EditText)findViewById(R.id.forgotpassword_email);
@@ -50,6 +55,12 @@ public class forgotpassword<toolbar> extends AppCompatActivity
             if(TextEmail.isEmpty())
             {
                 email.setError("Email is required!");
+                prog.setVisibility(View.GONE);
+                return;
+            }
+            if(!emailvalidity(TextEmail))
+            {
+                email.setError("email is invalid");
                 prog.setVisibility(View.GONE);
                 return;
             }
@@ -106,7 +117,8 @@ public class forgotpassword<toolbar> extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }

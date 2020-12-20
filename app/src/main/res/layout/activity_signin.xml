@@ -8,6 +8,20 @@
     android:background="@drawable/main"
     tools:context="com.ariel.healthbit.signin">
 
+    <ProgressBar
+        android:id="@+id/signin_prog"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00F8F5F5"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
+
     <TextView
         android:id="@+id/signin_signupBtn"
         android:layout_width="wrap_content"
@@ -30,7 +44,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="forgot password?"
-        android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,8 +71,9 @@
         android:id="@+id/signin_email"
         android:layout_width="320dp"
         android:layout_height="55dp"
-        android:background="@drawable/et_custom"
-        android:hint="Email"
+        android:background="@drawable/loginview"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:hint="  Email"
         android:inputType="textEmailSubject"
         android:padding="15dp"
         android:textSize="15sp"
@@ -74,8 +88,9 @@
         android:id="@+id/signin_password"
         android:layout_width="320dp"
         android:layout_height="55dp"
-        android:background="@drawable/et_custom"
-        android:hint="Password"
+        android:background="@drawable/loginview"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:hint="  Password"
         android:inputType="textPassword"
         android:padding="15dp"
         android:textSize="15sp"

@@ -39,6 +39,14 @@ public class storeProduct extends HashMap {
         this.subType=subType;
         UnitsInStock++;
     }
+    public storeProduct(String name,double kcal,double price,String subType,int uis)
+    {
+        this.name=name;
+        this.kcal=kcal;
+        this.price=price;
+        this.subType=subType;
+        UnitsInStock=uis;
+    }
 
 
     public storeProduct(storeProduct toCopy)

@@ -67,6 +67,7 @@ public class bmi_activity extends AppCompatActivity
         heightS.setMax(240); //define min and max value.
         heightS.setMin(40);
         cm=(TextView)findViewById(R.id.heightT);
+        cm.setText("50");
         heightS.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b)
@@ -94,13 +95,13 @@ public class bmi_activity extends AppCompatActivity
         weightS.setMax(150);
         weightS.setMin(10);
         kg=(TextView)findViewById(R.id.weightT);
+        kg.setText("48");
         weightS.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) //set the current value while using the seekbar
             {
                 int weight = seekBar.getProgress();
                 kg.setText(String.valueOf(weight));
-                // bmiResultTextView.setText(String.valueOf(calculateBmi(weight, height)));
             }
 
             @Override
@@ -108,14 +109,13 @@ public class bmi_activity extends AppCompatActivity
             {
                 int weight = seekBar.getProgress();
                 kg.setText(String.valueOf(weight));
-                //bmiResultTextView.setText(String.valueOf(calculateBmi(weight, height)));
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
                 int weight = seekBar.getProgress();
                 kg.setText(String.valueOf(weight));
-                //  bmiResultTextView.setText(String.valueOf(calculateBmi(weight, height)));
             }
         });
 

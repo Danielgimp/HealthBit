@@ -143,12 +143,8 @@ public class store extends AppCompatActivity {
                 String orderUID = refUser.getKey();
                 refOrders=FirebaseDatabase.getInstance().getReference("Orders").child(orderUID);
                 currOrder.setUserUID(fb.getInstance().getUid());
-                currOrder.totalPrice();
+                currOrder.setTotalPrice(0);
                 refOrders.setValue(currOrder);
-                refOrders.child("Proucts").setValue(currOrder.itemQuantity);
-                Intent myIntent = new Intent(getBaseContext(), cart_activity.class);
-                myIntent.putExtra("orderUID",orderUID);
-                startActivity(myIntent);
             }
         });
     }

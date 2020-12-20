@@ -25,6 +25,8 @@ import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 public class signup extends AppCompatActivity
@@ -50,7 +52,7 @@ public class signup extends AppCompatActivity
     Toolbar toolbar;
     Button nextstep;
     TextView login;
-    EditText name,lastname,email,password,confirmpass;
+    EditText name,lastname,email,password,confirmpass,phone;
     ProgressBar prog;
     FirebaseAuth ref=FirebaseAuth.getInstance();
     @Override
@@ -66,16 +68,18 @@ public class signup extends AppCompatActivity
         email=(EditText)findViewById(R.id.signup_email);
         password=(EditText)findViewById(R.id.signup_password);
         confirmpass=(EditText)findViewById(R.id.signup_repassword);
+        phone=(EditText)findViewById(R.id.signup_phone);
         nextstep= (Button) findViewById(R.id.signup_nextstep);
         nextstep.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view)
             {
                 //converts the inputs to strings.
-                String TextName=name.getText().toString().trim();
-                String TextLName=lastname.getText().toString().trim();
-                String TextEmail=email.getText().toString().trim();
-                String Textpassword=password.getText().toString().trim();
-                String TextConfpass=confirmpass.getText().toString().trim();
+                String TextName=name.getText().toString();
+                String TextLName=lastname.getText().toString();
+                String TextEmail=email.getText().toString();
+                String Textpassword=password.getText().toString();
+                String TextConfpass=confirmpass.getText().toString();
+                String TextPhone=phone.getText().toString();
                 prog=(ProgressBar)findViewById(R.id.signup_prog);
 
                 //name checks
@@ -133,36 +137,35 @@ public class signup extends AppCompatActivity
                     confirmpass.setError("password and confirm password should match!");
                     return;
                 }
+                if (TextUtils.isEmpty(TextPhone))
+                {
+                    phone.setError("phone is Required!");
+                    return;
+                }
+                if (TextPhone.length()<=5)
+                {
+                    phone.setError("phone is invalid");
+                    return;
+                }
                 prog.setVisibility(View.VISIBLE);
                 //connection to db and create new user
-                ref.fetchSignInMethodsForEmail(TextEmail).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) //check if email already exist
-                    {
-//                        boolean check=!task.getResult().getSignInMethods().isEmpty();
-                        boolean check=false;
-                        if(check)
-                        {
-                            email.setError("email is already exist");
-                            prog.setVisibility(View.GONE);
-                            return;
-                        }
-                    }
-                });
 
                 ref.createUserWithEmailAndPassword(TextEmail, Textpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) //checks if the connection was successful
                     {
                         if (task.isSuccessful()) {
-                            User u = new User(TextName, TextLName,ref.getCurrentUser().getEmail()); //create a User's object
+                            User u = new User(TextName, TextLName,ref.getCurrentUser().getEmail(),TextPhone); //create a User's object
                             DatabaseReference ref1= FirebaseDatabase.getInstance().getReference("users");
                             ref1.child(ref.getCurrentUser().getUid()).setValue(u);
                             prog.setVisibility(View.GONE);
-                            Intent myIntent = new Intent(getApplicationContext(), signup_next.class); //move to main menu actiivity
+                            Intent myIntent = new Intent(getApplicationContext(), signup_next.class);
+                            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(myIntent);
-                        } else {
-                            Toast.makeText(signup.this, "not work", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            {
+                                email.setError("email is already exist");
                             prog.setVisibility(View.GONE);
                         }
                     }
@@ -192,4 +195,11 @@ public class signup extends AppCompatActivity
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
+    public void onBackPressed()
+    {
+            Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(myIntent);
+    }
+
 }
