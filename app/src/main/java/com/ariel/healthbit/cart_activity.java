@@ -50,8 +50,6 @@ public class cart_activity extends AppCompatActivity {
                     String Name=snapshot.child("name").getValue(String.class);
                     UIDtoName.put(UID,Name);
                 }
-
-
             }
 
             @Override
