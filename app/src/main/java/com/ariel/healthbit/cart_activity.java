@@ -23,11 +23,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class cart_activity extends AppCompatActivity {
-    DatabaseReference refCurrentOrder, refProducts;
-    Double totalPrice = Double.valueOf(0);
+    DatabaseReference refCurrentOrder, refProducts,refUpdateProducts;
     TextView fullname, orderIdtxt;
     String Order_UID = "",Tempoutput="",output="";
     HashMap<String, String> UIDtoName = new HashMap<>();
+    HashMap<String,Integer> UnitsPurchasedUIDValue=new HashMap<>();
     Button homebutton;
 
     @Override
@@ -71,6 +71,8 @@ public class cart_activity extends AppCompatActivity {
                     int currAmount = order.getAmount();
                     String currName= UIDtoName.get(order.Item);
                     Tempoutput+="The order you made is detailed below: \nProduct Name: "+ currName + "\nUnits Bought: " + currAmount + "\nPrice for Each Unit: " + currPrice+ "\n\n";
+                    UnitsPurchasedUIDValue.put(order.Item,currAmount);
+                    int a=0;
                 }
                 output=Tempoutput+"Order Total: "+currOrder.totalPrice+"\n\nThank You for choosing HealthBit!";
                 orderIdtxt.setText(output);
@@ -82,10 +84,34 @@ public class cart_activity extends AppCompatActivity {
             }
         };
         refCurrentOrder.addValueEventListener(postListener);
+
+
         homebutton=(Button) findViewById(R.id.bth_homepage);
+
         homebutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view)
             {
+                for(Map.Entry<String, Integer> set : UnitsPurchasedUIDValue.entrySet())
+                {
+
+                    refUpdateProducts=FirebaseDatabase.getInstance().getReference("products").child(set.getKey()).child("inStock");
+                    ValueEventListener postListener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            int oldStock=dataSnapshot.getValue(Integer.class);
+                            int currStock=UnitsPurchasedUIDValue.get(set.getKey());
+                            refUpdateProducts.setValue(oldStock-currStock);
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    };
+                    refUpdateProducts.addListenerForSingleValueEvent(postListener);
+
+                }
+
                 Intent myIntent = new Intent(getApplicationContext(), MainProfile.class);
                 startActivity(myIntent);
             }

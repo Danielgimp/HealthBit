@@ -54,11 +54,11 @@ public class store extends AppCompatActivity {
                 for (Entry <String, storeProduct> entry : td.entrySet()) {
                     HashMap nana=entry.getValue();
                     Long LunitsInStock= (Long) nana.get("inStock");
-                    int nitsInStock=LunitsInStock.intValue();
+                    int nitsInStock = LunitsInStock != null ? LunitsInStock.intValue() : -1;
                     Long Lkcal=(Long) nana.get("Kcal");
-                    int kcal=Lkcal.intValue();
+                    int kcal= Lkcal != null ? Lkcal.intValue() : -1;
                     Long Lprice=(Long) nana.get("price");
-                    double price=Lprice.doubleValue();
+                    double price= Lprice != null ? Lprice.intValue() : -1;
                     String name= (String) nana.get("name");
                     String subType= (String) nana.get("description");
                     productUID.add((String) entry.getKey());
@@ -113,7 +113,10 @@ public class store extends AppCompatActivity {
 
                     lm.addView(ll);
                     buttons.add(btn);
-
+                    if(data.get(i).UnitsInStock==0)
+                    {
+                        buttons.get(i).setEnabled(false);
+                    }
                     buttons.get(i).setOnClickListener(handleOnClick(buttons.get(i),data,currOrder,tvIndexes));
                 }
 
@@ -135,19 +138,28 @@ public class store extends AppCompatActivity {
                 String productName=productUID.get(currBtn.getId());
                 double price=prices.get(currBtn.getId());
                 int stockQuantity=data.get(currBtn.getId()).UnitsInStock;
-                if(stockQuantity>0)
-                {
-                    currOrder.FillProductInMap(productName,price);
-                    int OrdersNumber=currOrder.getItemQuantity(productName);
-                    currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
-                    data.get(currBtn.getId()).setUnitsInStock(stockQuantity-1);
-                    tvIndexes.get(currBtn.getId()).setText("Currently In Stock: "+data.get(currBtn.getId()).UnitsInStock);
-
-                }
-                else {
-                    Toast.makeText(getBaseContext(),"No More Units in Stock!",Toast.LENGTH_LONG).show();
-                    currBtn.setEnabled(false);
-                }
+                    if(stockQuantity==1)
+                    {
+                        Toast.makeText(getBaseContext(),"Last unit in Stock",Toast.LENGTH_LONG).show();
+                        currBtn.setEnabled(false);
+                        currOrder.FillProductInMap(productName,price);
+                        int OrdersNumber=currOrder.getItemQuantity(productName);
+                        currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
+                        data.get(currBtn.getId()).setUnitsInStock(stockQuantity-1);
+                        tvIndexes.get(currBtn.getId()).setText("Currently In Stock: "+data.get(currBtn.getId()).UnitsInStock);
+                    }
+                    if(stockQuantity<=0)
+                    {
+                        currBtn.setEnabled(false);
+                    }
+                    else if(stockQuantity>1)
+                    {
+                        currOrder.FillProductInMap(productName,price);
+                        int OrdersNumber=currOrder.getItemQuantity(productName);
+                        currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
+                        data.get(currBtn.getId()).setUnitsInStock(stockQuantity-1);
+                        tvIndexes.get(currBtn.getId()).setText("Currently In Stock: "+data.get(currBtn.getId()).UnitsInStock);
+                    }
             }
         };
     }
@@ -156,17 +168,25 @@ public class store extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refUser= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).child("Orders").push();
-                String OrderUID=refUser.getKey();
-                refUser.setValue("true");
-                String orderUID = refUser.getKey();
-                Intent goToCart=new Intent(store.this,cart_activity.class);
-                goToCart.putExtra("Unique Order ID",orderUID);
-                refOrders=FirebaseDatabase.getInstance().getReference("Orders").child(orderUID);
-                currOrder.setUserUID(fb.getInstance().getUid());
-                currOrder.setTotalPrice(0);
-                refOrders.setValue(currOrder);
-                startActivity(goToCart);
+                if(currOrder.getItemQuantity().size()>=1)
+                {
+                    refUser= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).child("Orders").push();
+                    String OrderUID=refUser.getKey();
+                    refUser.setValue("true");
+                    String orderUID = refUser.getKey();
+                    Intent goToCart=new Intent(store.this,cart_activity.class);
+                    goToCart.putExtra("Unique Order ID",orderUID);
+                    refOrders=FirebaseDatabase.getInstance().getReference("Orders").child(orderUID);
+                    currOrder.setUserUID(fb.getInstance().getUid());
+                    currOrder.setTotalPrice(0);
+                    refOrders.setValue(currOrder);
+                    startActivity(goToCart);
+                }
+                else{
+                    Toast.makeText(getBaseContext(),"No Orders were made. \nPlease add items to the cart",Toast.LENGTH_LONG).show();
+
+                }
+
             }
         });
     }
