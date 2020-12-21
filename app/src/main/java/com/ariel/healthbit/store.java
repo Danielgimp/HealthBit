@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,9 +31,11 @@ public class store extends AppCompatActivity {
     Button gotoCart;
     ArrayList<String> productUID=new ArrayList<String>();
     ArrayList<Double> prices=new ArrayList<Double>();
+    ArrayList<TextView> tvIndexes=new ArrayList<>();
     Order currOrder=new Order("1");
     DatabaseReference refUser,refOrders;
     FirebaseAuth fb;
+    TextView inStock;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +72,7 @@ public class store extends AppCompatActivity {
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 params.setMargins(0, 0, 0, 50);
+
                 ArrayList<Button> buttons = new ArrayList<Button>();
                 for(int i=0;i<productsAmount;i++)
                 {
@@ -91,10 +95,10 @@ public class store extends AppCompatActivity {
                     subType.setText("Description: "+data.get(i).getSubType());
                     ll.addView(subType);
 
-                    TextView inStock=new TextView(getBaseContext());
+                    inStock=new TextView(getBaseContext());
                     inStock.setText("Currently In Stock: "+data.get(i).UnitsInStock);
                     ll.addView(inStock,params);
-
+                    tvIndexes.add(inStock);
                     // Create Button
                     final Button btn = new Button(getBaseContext());
                     // Give button an ID
@@ -110,7 +114,7 @@ public class store extends AppCompatActivity {
                     lm.addView(ll);
                     buttons.add(btn);
 
-                    buttons.get(i).setOnClickListener(handleOnClick(buttons.get(i),data,currOrder));
+                    buttons.get(i).setOnClickListener(handleOnClick(buttons.get(i),data,currOrder,tvIndexes));
                 }
 
             }
@@ -125,15 +129,25 @@ public class store extends AppCompatActivity {
         setOnClick(gotoCart,currOrder);
 
     }
-    View.OnClickListener handleOnClick(final Button currBtn,ArrayList<storeProduct>data,Order currOrder) {
+    View.OnClickListener handleOnClick(final Button currBtn,ArrayList<storeProduct>data,Order currOrder,ArrayList<TextView> tvIndexes) {
         return new View.OnClickListener() {
             public void onClick(View v) {
                 String productName=productUID.get(currBtn.getId());
                 double price=prices.get(currBtn.getId());
-                currOrder.FillProductInMap(productName,price);
-                int OrdersNumber=currOrder.getItemQuantity(productName);
-                currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
+                int stockQuantity=data.get(currBtn.getId()).UnitsInStock;
+                if(stockQuantity>0)
+                {
+                    currOrder.FillProductInMap(productName,price);
+                    int OrdersNumber=currOrder.getItemQuantity(productName);
+                    currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
+                    data.get(currBtn.getId()).setUnitsInStock(stockQuantity-1);
+                    tvIndexes.get(currBtn.getId()).setText("Currently In Stock: "+data.get(currBtn.getId()).UnitsInStock);
 
+                }
+                else {
+                    Toast.makeText(getBaseContext(),"No More Units in Stock!",Toast.LENGTH_LONG).show();
+                    currBtn.setEnabled(false);
+                }
             }
         };
     }
