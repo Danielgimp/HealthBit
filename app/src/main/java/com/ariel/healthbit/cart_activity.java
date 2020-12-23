@@ -67,14 +67,14 @@ public class cart_activity extends AppCompatActivity {
                 Order currOrder = new Order(dataSnapshot.getValue(Order.class));
                 for (int i = 0; i < currOrder.getItemQuantity().size(); i++) {
                     order = new productOrder(currOrder.getItemQuantity().get(i));
-                    double currPrice = order.getPrice();
                     int currAmount = order.getAmount();
+                    double currPrice = (order.getPrice()/currAmount);
+                    double itemTotal=currPrice*currAmount;
                     String currName= UIDtoName.get(order.Item);
-                    Tempoutput+="The order you made is detailed below: \nProduct Name: "+ currName + "\nUnits Bought: " + currAmount + "\nPrice for Each Unit: " + currPrice+ "\n\n";
+                    Tempoutput+="The order you made is detailed below: \nProduct Name: "+ currName + "\nUnits Bought: " + currAmount + "\nPrice for Each Unit: " + currPrice+ "\nItem Total: "+ itemTotal +"\n\n" ;
                     UnitsPurchasedUIDValue.put(order.Item,currAmount);
-                    int a=0;
                 }
-                output=Tempoutput+"Order Total: "+currOrder.totalPrice+"\n\nThank You for choosing HealthBit!";
+                output=Tempoutput+"Order Total: "+currOrder.getTotalPrice()+"\n\nThank You for choosing HealthBit!";
                 orderIdtxt.setText(output);
             }
 

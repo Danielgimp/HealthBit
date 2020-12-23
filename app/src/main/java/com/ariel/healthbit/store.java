@@ -141,7 +141,7 @@ public class store extends AppCompatActivity {
                     {
                         Toast.makeText(getBaseContext(),"Last unit in Stock",Toast.LENGTH_LONG).show();
                         currBtn.setEnabled(false);
-                        currOrder.FillProductInMap(productName,price);
+                        currOrder.FillProductInArrayList(productName,price);
                         int OrdersNumber=currOrder.getItemQuantity(productName);
                         currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
                         data.get(currBtn.getId()).setUnitsInStock(stockQuantity-1);
@@ -153,7 +153,7 @@ public class store extends AppCompatActivity {
                     }
                     else if(stockQuantity>1)
                     {
-                        currOrder.FillProductInMap(productName,price);
+                        currOrder.FillProductInArrayList(productName,price);
                         int OrdersNumber=currOrder.getItemQuantity(productName);
                         currBtn.setText("Add To Cart"+ "(" +OrdersNumber+ ")");
                         data.get(currBtn.getId()).setUnitsInStock(stockQuantity-1);
