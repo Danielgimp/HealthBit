@@ -1,0 +1,290 @@
+@startuml
+
+title __HEALTHBIT.APP's Class Diagram__\n
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.BuildConfig {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Details {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.FireApp {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.First2Fragment {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.First3Fragment {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.FirstFragment {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.MainActivity {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.MainProfile {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Order {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Product {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.ProductEvent {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Second2Fragment {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Second3Fragment {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.SecondFragment {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.TipEvent {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.User {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.activityOrders {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.adminMenu1 {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.bmi_activity {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.cart_activity {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.daily_activity {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.dailymenu {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.forgotpassword {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.list_menu_2Activity {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.list_menu_activity {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.list_menu_adapter {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.myprofile {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.newProducts {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.productOrder {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.settingprofile {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.signin {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.signup {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.signup_next {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.store {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.storeProduct {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.tips {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.updateProducts {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.updateprofile {
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.weighttracker {
+    }
+  }
+  
+
+  com.ariel.healthbit.FireApp -up-|> android.app.Application
+  com.ariel.healthbit.First2Fragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.First3Fragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.FirstFragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.MainProfile -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.Product .up.|> com.google.firebase.database.DatabaseReference.CompletionListener
+  com.ariel.healthbit.ProductEvent .up.|> com.google.firebase.database.DatabaseReference.CompletionListener
+  com.ariel.healthbit.Second2Fragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.Second3Fragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.SecondFragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.TipEvent .up.|> com.google.firebase.database.DatabaseReference.CompletionListener
+  com.ariel.healthbit.activityOrders -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.activityOrders o-- com.ariel.healthbit.storeProduct : product1
+  com.ariel.healthbit.activityOrders o-- com.ariel.healthbit.storeProduct : product2
+  com.ariel.healthbit.activityOrders o-- com.ariel.healthbit.storeProduct : product3
+  com.ariel.healthbit.adminMenu1 -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.bmi_activity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.cart_activity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.daily_activity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.dailymenu -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.forgotpassword -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.list_menu_2Activity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.list_menu_activity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.list_menu_adapter .up.|> android.widget.ListAdapter
+  com.ariel.healthbit.list_menu_adapter -up-|> android.widget.BaseAdapter
+  com.ariel.healthbit.myprofile -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.newProducts -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.settingprofile -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.signin -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.signup -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.signup_next -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.store -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.store o-- com.ariel.healthbit.Order : currOrder
+  com.ariel.healthbit.storeProduct -up-|> java.util.HashMap
+  com.ariel.healthbit.tips -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.updateProducts -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.updateProducts o-- com.ariel.healthbit.storeProduct : product1
+  com.ariel.healthbit.updateProducts o-- com.ariel.healthbit.storeProduct : product2
+  com.ariel.healthbit.updateProducts o-- com.ariel.healthbit.storeProduct : product3
+  com.ariel.healthbit.updateprofile -up-|> androidx.appcompat.app.AppCompatActivity
+  com.ariel.healthbit.weighttracker -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -27,7 +27,6 @@ import java.util.Map.Entry;
 
 public class store extends AppCompatActivity {
 
-    storeProduct product1,product2,product3;
     Button gotoCart;
     ArrayList<String> productUID=new ArrayList<String>();
     ArrayList<Double> prices=new ArrayList<Double>();
