@@ -27,41 +27,74 @@
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/roundbtn"
         android:text="Breakfast"
         android:textAllCaps="false"
         android:textSize="28sp"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarDAILYMENU"
-        tools:layout_editor_absoluteX="36dp" />
+        app:backgroundTint="@color/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDAILYMENU" />
 
     <Button
         android:id="@+id/btn2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/roundbtn"
         android:text="Lunch"
         android:textAllCaps="false"
         android:textSize="28sp"
-        app:layout_constraintTop_toBottomOf="@+id/btn1"
-        tools:layout_editor_absoluteX="0dp" />
+        app:backgroundTint="@color/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
     <Button
         android:id="@+id/btn3"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/roundbtn"
         android:text="Dinner"
         android:textAllCaps="false"
         android:textSize="28sp"
-        app:layout_constraintTop_toBottomOf="@+id/btn2"
-        tools:layout_editor_absoluteX="0dp" />
+        app:backgroundTint="@color/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     <Button
         android:id="@+id/btn4"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/roundbtn"
         android:text="Snacks"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/btn3"
-        tools:layout_editor_absoluteX="-1dp"
-        android:textSize="28sp" />
+        android:textSize="28sp"
+        app:backgroundTint="@color/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn3" />
 
     <TextView
         android:id="@+id/textView"
@@ -82,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-black"
-        android:text="100 Calorie"
+        android:text="Wait..."
         android:textSize="46sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

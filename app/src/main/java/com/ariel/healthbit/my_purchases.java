@@ -52,7 +52,6 @@ public class my_purchases extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        ExpandableListView elvInvestments = (ExpandableListView) findViewById(R.id.elvInvestments);
 
 
     }
