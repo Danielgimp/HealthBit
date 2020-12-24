@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainProfile extends AppCompatActivity
 {
    Toolbar toolbar;
-   Button logout,bmi,menu,act,tips,myprof,store,weightTracker,setting;
+   Button logout,bmi,menu,act,tips,myprof,store,weightTracker,setting,my_purchases;
    TextView hello;
    DatabaseReference ref;
    FirebaseAuth fb;
@@ -60,6 +60,15 @@ public class MainProfile extends AppCompatActivity
         };
         ref.addValueEventListener(postListener);
 
+        my_purchases = (Button) findViewById(R.id.btn_myPurchases);
+        my_purchases.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view)
+            {
+
+                Intent myIntent = new Intent(getApplicationContext(), my_purchases.class);
+                startActivity(myIntent);
+            }
+        });
 
         logout = (Button) findViewById(R.id.mainprofile_logout); //logout, and move to the login activity
         logout.setOnClickListener(new View.OnClickListener() {

@@ -13,15 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthBit">
+        <activity android:name=".my_purchases"></activity>
         <activity
             android:name=".activityOrders"
             android:label="@string/title_activity_orders"
-            android:theme="@style/Theme.HealthBit.NoActionBar"></activity>
+            android:theme="@style/Theme.HealthBit.NoActionBar" />
         <activity
             android:name=".adminMenu1"
             android:label="@string/title_activity_admin_menu1"
             android:theme="@style/Theme.HealthBit.NoActionBar" />
-        <activity android:name=".cart_activity"></activity>
+        <activity android:name=".cart_activity" />
         <activity android:name=".settingprofile" />
         <activity android:name=".newProducts" />
         <activity android:name=".updateprofile" />
