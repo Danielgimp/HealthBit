@@ -59,6 +59,10 @@ public class Order
         this.userUID = userUID;
     }
 
+    public String getUserUID() {
+        return this.userUID;
+    }
+
     /**
      * Fills the Arraylist With a productOrder class, if the product is non-existent a new node will be created for the product, Otherwise the function adds a +1 to existing product.
      * @param  name Name of the product.

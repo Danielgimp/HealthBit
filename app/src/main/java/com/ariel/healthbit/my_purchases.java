@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,11 +20,13 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class my_purchases extends AppCompatActivity {
     DatabaseReference refOrders;
-    FirebaseAuth fb;
+    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    ArrayList<Order> allUserOrders=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,20 +34,26 @@ public class my_purchases extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbalWEIGHTTRACKER);
         setSupportActionBar(toolbar);
 
-        String userUID=FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).toString();
         refOrders = FirebaseDatabase.getInstance().getReference("Orders");
-        Query allPostFromAuthor = refOrders.child("userUID").equalTo(userUID);
-        allPostFromAuthor.addValueEventListener( new ValueEventListener(){
+        refOrders.addListenerForSingleValueEvent( new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot post : dataSnapshot.getChildren() ){
-                    int a=0;
+                    Order currOrder=new Order(post.getValue(Order.class));
+                    if(currOrder.getUserUID().equals(currentFirebaseUser.getUid()))
+                    {
+                        allUserOrders.add(currOrder);
+                    }
                 }
+                int a=0;
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
+
+        ExpandableListView elvInvestments = (ExpandableListView) findViewById(R.id.elvInvestments);
+
 
     }
 

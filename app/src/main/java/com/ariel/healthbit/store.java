@@ -34,6 +34,7 @@ public class store extends AppCompatActivity {
     Order currOrder=new Order("1");
     DatabaseReference refUser,refOrders;
     FirebaseAuth fb;
+    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     TextView inStock;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,7 +177,7 @@ public class store extends AppCompatActivity {
                     Intent goToCart=new Intent(store.this,cart_activity.class);
                     goToCart.putExtra("Unique Order ID",orderUID);
                     refOrders=FirebaseDatabase.getInstance().getReference("Orders").child(orderUID);
-                    currOrder.setUserUID(fb.getInstance().getUid());
+                    currOrder.setUserUID(currentFirebaseUser.getUid());
                     currOrder.setTotalPrice(0);
                     refOrders.setValue(currOrder);
                     startActivity(goToCart);
