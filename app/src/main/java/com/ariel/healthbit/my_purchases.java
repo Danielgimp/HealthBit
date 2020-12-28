@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class my_purchases extends AppCompatActivity {
     DatabaseReference refOrders, refProducts;
@@ -25,6 +26,7 @@ public class my_purchases extends AppCompatActivity {
     ArrayList<Order> allUserOrders = new ArrayList<>();
     String ProductName = "";
     String myPurchases = "";
+    HashMap<String,String> UIDtoName=new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +54,52 @@ public class my_purchases extends AppCompatActivity {
                 LinearLayout ll = new LinearLayout(getBaseContext());
                 ll.setOrientation(LinearLayout.VERTICAL);
                 for (int i = 0; i < allUserOrders.size(); i++) {
-                    myPurchases += "Order" + (i + 1) + " Contains: \n";
                     Order ord = new Order(allUserOrders.get(i));
                     for (int j = 0; j < ord.getItemQuantity().size(); j++) {
-                        findNameByUID(ord.getItemQuantity().get(j).getItem());
-                        myPurchases += "Item : " + ProductName + "\nPrice: " + ord.getItemQuantity().get(j).getPrice() + "\nAmount: " + ord.getItemQuantity().get(j).getAmount() + "\n\n";
+                        refProducts = FirebaseDatabase.getInstance().getReference("products").child(ord.getItemQuantity().get(j).getItem()).child("name");
+                        int finalJ = j;
+                        refProducts.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                try {
+                                    if (dataSnapshot.getValue() != null) {
+                                        try {
+                                            ord.getItemQuantity().get(finalJ).setItem(dataSnapshot.getValue(String.class));
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    } else {
+                                        Log.e("TAG", " it's null.");
+                                    }
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+
                     }
-                    myPurchases += "Total Price for this order is: " + ord.getTotalPrice() + "\n\n____________\n\n";
+
+
                 }
 
-                tv.setText(myPurchases);
-                ll.addView(tv, params);
-                lm.addView(ll);
+                for (int i = 0; i < allUserOrders.size(); i++) {
+                    myPurchases += "Order " + (i + 1) + " Contains: \n";
+                    Order ord = new Order(allUserOrders.get(i));
+                    for (int j = 0; j < ord.getItemQuantity().size(); j++) {
+                        myPurchases += "Item ID: " +  ord.getItemQuantity().get(j).getItem() + "\nPrice: " + ord.getItemQuantity().get(j).getPrice() + "\nAmount: " + ord.getItemQuantity().get(j).getAmount() + "\n\n";
+                    }
+                    myPurchases += "Total Price for this order is: " + ord.getTotalPrice() + "\n\n__________________\n\n";
+                }
+
+                    tv.setText(myPurchases);
+                    ll.addView(tv, params);
+                    lm.addView(ll);
+
             }
 
             @Override
@@ -81,34 +117,6 @@ public class my_purchases extends AppCompatActivity {
         return true;
     }
 
-    public void findNameByUID(String UID) {
-        refProducts = FirebaseDatabase.getInstance().getReference("products").child(UID).child("name");
-        refProducts.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                try {
-                    if (dataSnapshot.getValue() != null) {
-                        try {
-                            ProductName = dataSnapshot.getValue(String.class);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Log.e("TAG", " it's null.");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
     }
 
 
-}
