@@ -1,0 +1,672 @@
+@startuml
+
+title __HEALTHBIT's Class Diagram__\n
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Details {
+        + date : String
+        + gender : String
+        + height : double
+        + weight : double
+        + weights : ArrayList<Double>
+        + Details()
+        + Details()
+        + getDate()
+        + getGender()
+        + getHeight()
+        + getWeight()
+        + getWeights()
+        + setDate()
+        + setGender()
+        + setHeight()
+        + setWeight()
+        + setWeights()
+        + toMap()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.FireApp {
+        + onCreate()
+    }
+  }
+
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.First2Fragment {
+        + onCreateView()
+        + onViewCreated()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.First3Fragment {
+        + onCreateView()
+        + onViewCreated()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.FirstFragment {
+        + onCreateView()
+        + onViewCreated()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.MainActivity {
+        {static} + uid : String
+        ~ signinbutton : Button
+        ~ signupbutton : Button
+        ~ toolbar : Toolbar
+        ~ user : FirebaseUser
+        + onBackPressed()
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.MainProfile {
+        ~ act : Button
+        ~ bmi : Button
+        ~ fb : FirebaseAuth
+        ~ hello : TextView
+        ~ logout : Button
+        ~ menu : Button
+        ~ myprof : Button
+        ~ ref : DatabaseReference
+        ~ setting : Button
+        ~ store : Button
+        ~ tips : Button
+        ~ toolbar : Toolbar
+        ~ user : FirebaseUser
+        ~ weightTracker : Button
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Order {
+        ~ itemQuantity : ArrayList<productOrder>
+
+        ~ totalPrice : double
+        ~ userUID : String
+        + FillProductInMap()
+        + Order()
+        + Order()
+        + Order()
+        + Order()
+        + getItemQuantity()
+        + getItemQuantity()
+        + getTotalPrice()
+        + getUserUID()
+        + setItemQuantity()
+        + setTotalPrice()
+        + setUserUID()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Product {
+        - cal : int
+        - name : String
+        + Product()
+        + Product()
+        + getCal()
+        + getFullName()
+        + getName()
+        + onComplete()
+        + setCal()
+        + setName()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.ProductEvent {
+        - cal : int
+        - count : int
+        - name : String
+        - start : String
+        - type : int
+        + ProductEvent()
+        + ProductEvent()
+        + getCal()
+        + getCount()
+        + getFullName()
+        + getName()
+        + getStart()
+        + getType()
+        + onComplete()
+        + setCal()
+        + setCount()
+        + setName()
+        + setStart()
+        + setType()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Second2Fragment {
+        + onCreateView()
+        + onViewCreated()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.Second3Fragment {
+        + onCreateView()
+        + onViewCreated()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.SecondFragment {
+        + onCreateView()
+        + onViewCreated()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.TipEvent {
+        - context : String
+        - date : String
+        + TipEvent()
+        + TipEvent()
+        + getContext()
+        + getDate()
+        + onComplete()
+        + setContext()
+        + setDate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.User {
+        + Started : String
+        + admin : String
+        + email : String
+        + lname : String
+        + name : String
+        + phone : String
+        + User()
+        + User()
+        + toMap()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.activityOrders {
+        ~ getin : String
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.adminMenu1 {
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.bmi_activity {
+        ~ BMI : Button
+        ~ cm : TextView
+        ~ heightS : SeekBar
+        ~ kg : TextView
+        ~ toolbar : Toolbar
+        ~ weightS : SeekBar
+        + onCreateOptionsMenu()
+        # onCreate()
+        - BMImeaning()
+        - calculateBmi()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.cart_activity {
+        ~ Order_UID : String
+        ~ Tempoutput : String
+        ~ UIDtoName : HashMap<String, String>
+        ~ UnitsPurchasedUIDValue : HashMap<String, Integer>
+        ~ fullname : TextView
+        ~ homebutton : Button
+        ~ orderIdtxt : TextView
+        ~ output : String
+        ~ refCurrentOrder : DatabaseReference
+        ~ refProducts : DatabaseReference
+        ~ refUpdateProducts : DatabaseReference
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.daily_activity {
+        ~ toolbar : Toolbar
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.dailymenu {
+        {static} + type : int
+        ~ back : Button
+        ~ btn1 : Button
+        ~ btn2 : Button
+        ~ btn3 : Button
+        ~ btn4 : Button
+        ~ toolbar : Toolbar
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.forgotpassword {
+        ~ auth : FirebaseAuth
+        ~ email : EditText
+        ~ login : TextView
+        ~ prog : ProgressBar
+        ~ reset : Button
+        ~ toolbar : Toolbar
+        {static} + emailvalidity()
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.list_menu_2Activity {
+        {static} + signin_uid : String
+        ~ btn_save : Button
+        ~ database : FirebaseDatabase
+        ~ edit_calories : EditText
+        ~ edit_product : EditText
+        ~ ref : DatabaseReference
+        ~ refEvent : DatabaseReference
+        ~ user : FirebaseUser
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.list_menu_activity {
+        {static} + adapter : list_menu_adapter
+        {static} + context : Context
+        {static} + database : FirebaseDatabase
+        {static} + event_of_today : Query
+        {static} + list : ArrayList<ProductEvent>
+        {static} + list_button : Button
+        {static} + listview : ListView
+        {static} + ref : DatabaseReference
+        {static} + search_autoComplete : AutoCompleteTextView
+        {static} + search_button : ImageButton
+        {static} + search_list : ArrayList<String>
+        {static} + search_query : String
+        {static} + today_date : String
+        {static} + clear_adapter()
+        {static} + get_today_date()
+        {static} + list_search_by_fullname()
+        + onCreateOptionsMenu()
+        {static} + remove_all_from_db()
+        {static} + remove_from_db()
+        {static} + set_adapter()
+        + set_list_clear_button()
+        {static} + set_new_row()
+        {static} + set_new_row_in_db()
+        + set_search_options_button()
+        {static} + set_search_options_init()
+        {static} + set_search_options_of_globals()
+        {static} + set_search_options_of_owner()
+        {static} + set_up_user_rows()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.list_menu_adapter {
+        + database : FirebaseDatabase
+        + event_of_today : Query
+        + ref : DatabaseReference
+        - btn_less : Button
+        - btn_more : Button
+        - context : Context
+        - edit_count : EditText
+        - list : ArrayList<ProductEvent>
+        - value : int
+        - view_product : TextView
+        + getCount()
+        + getItem()
+        + getItemId()
+        + getView()
+        + get_edit_count()
+        + list_menu_adapter()
+        + update_db_on_count_change()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.myprofile {
+        ~ bmi : TextView
+        ~ datebirth : TextView
+        ~ email : TextView
+        ~ fb : FirebaseAuth
+        ~ fullname : TextView
+        ~ height : TextView
+        ~ phone : TextView
+        ~ refDetails : DatabaseReference
+        ~ refUser : DatabaseReference
+        ~ toolbar : Toolbar
+        ~ update : Button
+        ~ user : FirebaseUser
+        ~ weight : TextView
+        {static} - RANDOM : Random
+        - lastX : int
+        + onBackPressed()
+        + onCreateOptionsMenu()
+        # onCreate()
+        - calculateBmi()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.newProducts {
+        ~ auth : FirebaseAuth
+        ~ des : EditText
+        ~ kcal : EditText
+        ~ mapProduct : Map<String, Object>
+        ~ nameProduct : EditText
+        ~ price : EditText
+        ~ refStore : DatabaseReference
+        ~ refUser : DatabaseReference
+        ~ root : FirebaseDatabase
+        ~ setP : Button
+        ~ stock : EditText
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.productOrder {
+        ~ Item : String
+        ~ amount : int
+        ~ price : double
+        + getAmount()
+        + getItem()
+        + getPrice()
+        + productOrder()
+        + productOrder()
+        + productOrder()
+        + setAmount()
+        + setItem()
+        + setPrice()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.settingprofile {
+        ~ auth : FirebaseAuth
+        ~ changepass : Button
+        ~ confirmpass : EditText
+        ~ currentpass : EditText
+        ~ delete : Button
+        ~ newpass : EditText
+        ~ toolbar : Toolbar
+        ~ user : FirebaseUser
+        + onBackPressed()
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.signin {
+        ~ email : EditText
+        ~ forgotpassword : TextView
+        ~ login : Button
+        ~ password : EditText
+        ~ prog : ProgressBar
+        ~ ref : FirebaseAuth
+        ~ refUser : DatabaseReference
+        ~ signup : TextView
+        ~ toolbar : Toolbar
+        {static} + emailvalidity()
+        + onBackPressed()
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.signup {
+        ~ confirmpass : EditText
+        ~ email : EditText
+        ~ lastname : EditText
+        ~ login : TextView
+        ~ name : EditText
+        ~ nextstep : Button
+        ~ password : EditText
+        ~ phone : EditText
+        ~ prog : ProgressBar
+        ~ ref : FirebaseAuth
+        ~ toolbar : Toolbar
+        {static} + emailvalidity()
+        {static} + namevalidity()
+        + onBackPressed()
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.signup_next {
+        ~ aut : FirebaseAuth
+        ~ birthdate : DatePicker
+        ~ birthdate_textview : TextView
+        ~ gend : RadioButton
+        ~ genderR : RadioGroup
+        ~ height : EditText
+        ~ male : RadioButton
+        ~ prog : ProgressBar
+        ~ ref : DatabaseReference
+        ~ register : Button
+        ~ toolbar : Toolbar
+        ~ weight : EditText
+        + onBackPressed()
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.store {
+        ~ fb : FirebaseAuth
+        ~ gotoCart : Button
+        ~ inStock : TextView
+        ~ prices : ArrayList<Double>
+        ~ productUID : ArrayList<String>
+        ~ refOrders : DatabaseReference
+        ~ refUser : DatabaseReference
+        ~ tvIndexes : ArrayList<TextView>
+        + setOnClick()
+        # onCreate()
+        ~ handleOnClick()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.storeProduct {
+        + UnitsInStock : int
+        + kcal : double
+        + name : String
+        + price : double
+        + subType : String
+        + getKcal()
+        + getName()
+        + getPrice()
+        + getSubType()
+        + getUnitsInStock()
+        + setKcal()
+        + setName()
+        + setPrice()
+        + setSubType()
+        + setUnitsInStock()
+        + storeProduct()
+        + storeProduct()
+        + storeProduct()
+        + storeProduct()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.tips {
+        ~ database : FirebaseDatabase
+        ~ imageView : ImageView
+        ~ ref : DatabaseReference
+        ~ user : FirebaseUser
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.updateProducts {
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.updateprofile {
+        ~ auth : FirebaseAuth
+        ~ bmi : TextView
+        ~ email : TextView
+        ~ height : EditText
+        ~ lname : EditText
+        ~ name : EditText
+        ~ number : EditText
+        ~ phone : EditText
+        ~ refDetails : DatabaseReference
+        ~ refUser : DatabaseReference
+        ~ toolbar : Toolbar
+        ~ update : Button
+        ~ weight : EditText
+        + onBackPressed()
+        + onCreateOptionsMenu()
+        # onCreate()
+        - calculateBmi()
+    }
+  }
+  
+
+  namespace com.ariel.healthbit {
+    class com.ariel.healthbit.weighttracker {
+        ~ addweight : Button
+        ~ auth : FirebaseAuth
+        ~ currentweight : TextView
+        ~ graphview : GraphView
+        ~ openGraph : Button
+        ~ refWeight : DatabaseReference
+        ~ refWeights : DatabaseReference
+        ~ td1 : ArrayList<Long>
+        ~ toolbar : Toolbar
+        ~ updateWeight : EditText
+        ~ user : FirebaseUser
+        ~ w : double
+        + onCreateOptionsMenu()
+        # onCreate()
+    }
+  }
+  
+
+  com.ariel.healthbit.FireApp -up-|> android.app.Application
+  com.ariel.healthbit.First2Fragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.First3Fragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.FirstFragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.MainActivity
+  com.ariel.healthbit.MainProfile
+  com.ariel.healthbit.Product .up.|> com.google.firebase.database.DatabaseReference.CompletionListener
+  com.ariel.healthbit.ProductEvent .up.|> com.google.firebase.database.DatabaseReference.CompletionListener
+  com.ariel.healthbit.Second2Fragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.Second3Fragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.SecondFragment -up-|> androidx.fragment.app.Fragment
+  com.ariel.healthbit.TipEvent .up.|> com.google.firebase.database.DatabaseReference.CompletionListener
+  com.ariel.healthbit.activityOrders
+  com.ariel.healthbit.activityOrders o-- com.ariel.healthbit.storeProduct : product1
+  com.ariel.healthbit.activityOrders o-- com.ariel.healthbit.storeProduct : product2
+  com.ariel.healthbit.activityOrders o-- com.ariel.healthbit.storeProduct : product3
+  com.ariel.healthbit.adminMenu1
+  com.ariel.healthbit.bmi_activity
+  com.ariel.healthbit.cart_activity
+  com.ariel.healthbit.daily_activity
+  com.ariel.healthbit.dailymenu
+  com.ariel.healthbit.forgotpassword
+  com.ariel.healthbit.list_menu_2Activity
+  com.ariel.healthbit.list_menu_activity
+  com.ariel.healthbit.list_menu_adapter .up.|> android.widget.ListAdapter
+  com.ariel.healthbit.list_menu_adapter -up-|> android.widget.BaseAdapter
+  com.ariel.healthbit.myprofile
+  com.ariel.healthbit.newProducts
+  com.ariel.healthbit.settingprofile
+  com.ariel.healthbit.signin
+  com.ariel.healthbit.signup
+  com.ariel.healthbit.signup_next
+  com.ariel.healthbit.store
+  com.ariel.healthbit.store o-- com.ariel.healthbit.Order : currOrder
+  com.ariel.healthbit.storeProduct -up-|> java.util.HashMap
+  com.ariel.healthbit.tips
+  com.ariel.healthbit.updateProducts
+  com.ariel.healthbit.updateProducts o-- com.ariel.healthbit.storeProduct : product1
+  com.ariel.healthbit.updateProducts o-- com.ariel.healthbit.storeProduct : product2
+  com.ariel.healthbit.updateProducts o-- com.ariel.healthbit.storeProduct : product3
+  com.ariel.healthbit.updateprofile
+  com.ariel.healthbit.weighttracker
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

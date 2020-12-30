@@ -106,8 +106,6 @@ public class my_purchases extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-
     }
 
 
