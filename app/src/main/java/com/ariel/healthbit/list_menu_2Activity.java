@@ -85,7 +85,5 @@ public class list_menu_2Activity extends AppCompatActivity {
 
             }
         });
-
-        //Toast.makeText(list_menu_2Activity.this, "Title="+ ListMenuActivity.Search_k, Toast.LENGTH_LONG).show();
     }
 }

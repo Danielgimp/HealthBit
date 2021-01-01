@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="@drawable/main"
+    tools:context=".settingprofile">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarSettingProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar"
+        android:layoutDirection="ltr"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:subtitleTextColor="@color/white"
+        app:titleTextColor="@color/white" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/psswordLayout"
+        android:layout_width="324dp"
+        android:layout_height="461dp"
+        android:background="#31D1C0C0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333">
+
+        <Button
+            android:id="@+id/setting_changepassword"
+            android:layout_width="145dp"
+            android:layout_height="41dp"
+            android:background="@drawable/roundbtn"
+            android:text="change password"
+            android:textSize="10sp"
+            app:backgroundTint="@color/button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.928" />
+
+        <TextView
+            android:id="@+id/setting_textpass3"
+            android:layout_width="203dp"
+            android:layout_height="21dp"
+            android:gravity="left"
+            android:text="New password (6 characters min.)"
+            android:textColorHint="#FFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.076"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.405" />
+
+        <TextView
+            android:id="@+id/setting_textpass4"
+            android:layout_width="203dp"
+            android:layout_height="21dp"
+            android:gravity="left"
+            android:text="Confirm new password"
+            android:textColorHint="#FFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.132"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.627" />
+
+        <EditText
+            android:id="@+id/setting_currentpass"
+            android:layout_width="271dp"
+            android:layout_height="54dp"
+            android:background="@drawable/et_custom"
+            android:drawableLeft="@drawable/ic_baseline_password_24"
+            android:hint="current password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.301"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.272" />
+
+        <EditText
+            android:id="@+id/setting_confirmnewpass"
+            android:layout_width="271dp"
+            android:layout_height="56dp"
+            android:background="@drawable/et_custom"
+            android:drawableLeft="@drawable/ic_baseline_password_24"
+            android:hint="  confirm password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.245"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.733" />
+
+        <EditText
+            android:id="@+id/setting_newpass"
+            android:layout_width="271dp"
+            android:layout_height="57dp"
+            android:background="@drawable/et_custom"
+            android:drawableLeft="@drawable/ic_baseline_password_24"
+            android:hint=" new password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.301"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/setting_textpass"
+            android:layout_width="310dp"
+            android:layout_height="57dp"
+            android:gravity="left"
+            android:text="Enter your new password for your HealthBit's account"
+            android:textColor="#656161"
+            android:textColorHint="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.928"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.039" />
+
+        <TextView
+            android:id="@+id/setting_textpass2"
+            android:layout_width="155dp"
+            android:layout_height="25dp"
+            android:gravity="left"
+            android:text="Current Password"
+            android:textColorHint="#FFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.076"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.194" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deleteUserLayout"
+        android:layout_width="328dp"
+        android:layout_height="121dp"
+        android:background="#31D1C0C0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954">
+
+        <Button
+            android:id="@+id/setting_deleteaccount"
+            android:layout_width="195dp"
+            android:layout_height="67dp"
+            android:background="@drawable/roundbtn"
+            android:text="delete account"
+            android:textSize="14sp"
+            app:backgroundTint="@android:color/holo_red_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

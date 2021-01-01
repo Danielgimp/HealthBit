@@ -16,7 +16,7 @@
         android:drawableLeft="@drawable/ic_activity"
         android:text="My Purchases"
         android:textColor="#FFFFFF"
-        app:backgroundTint="#B9FFB7CF"
+        app:backgroundTint="@color/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"

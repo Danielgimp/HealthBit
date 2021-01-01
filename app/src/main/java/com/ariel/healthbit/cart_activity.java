@@ -23,7 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class cart_activity extends AppCompatActivity {
-    DatabaseReference refCurrentOrder, refProducts,refUpdateProducts;
+
+    DatabaseReference refCurrentOrder, refProducts,refUpdateProducts,refUser;
+    FirebaseAuth fb;
     TextView fullname, orderIdtxt;
     String Order_UID = "",Tempoutput="",output="";
     HashMap<String, String> UIDtoName = new HashMap<>();
@@ -39,6 +41,23 @@ public class cart_activity extends AppCompatActivity {
         fullname = (TextView) findViewById(R.id.HellotxtView);
         orderIdtxt=(TextView) findViewById(R.id.cart_OrderId);
         Order_UID = getIntent().getStringExtra("Unique Order ID");
+        refUser= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid());
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                User user = dataSnapshot.getValue(User.class);
+                if(user!=null) {
+                    fullname.setText("Hello "+user.name + " " + user.lname +" !");
+
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+            }
+        };
+        refUser.addValueEventListener(userListener);
 
         refProducts = FirebaseDatabase.getInstance().getReference("products");
         String Name="";

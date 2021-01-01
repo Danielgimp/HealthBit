@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".newProducts">
+
+    <EditText
+        android:id="@+id/price"
+        android:layout_width="396dp"
+        android:layout_height="48dp"
+        android:autoText="false"
+        android:gravity="center"
+        android:hint="מחיר"
+        android:textAllCaps="false"
+        android:textColor="#E53935"
+        android:textColorHint="#E53935"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.704" />
+
+    <EditText
+        android:id="@+id/kcal"
+        android:layout_width="396dp"
+        android:layout_height="48dp"
+        android:autoText="false"
+        android:gravity="center"
+        android:hint="קלוריות"
+        android:textAllCaps="false"
+        android:textColor="#E53935"
+        android:textColorHint="#E53935"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266" />
+
+    <EditText
+        android:id="@+id/stock"
+        android:layout_width="396dp"
+        android:layout_height="48dp"
+        android:autoText="false"
+        android:gravity="center"
+        android:hint="כמות במלאי"
+        android:textAllCaps="false"
+        android:textColor="#E53935"
+        android:textColorHint="#E53935"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408" />
+
+    <EditText
+        android:id="@+id/des"
+        android:layout_width="396dp"
+        android:layout_height="48dp"
+        android:autoText="false"
+        android:autofillHints=""
+        android:gravity="center"
+        android:hint="פירוט"
+        android:inputType="textLongMessage"
+        android:textAllCaps="false"
+        android:textColor="#E53935"
+        android:textColorHint="#E53935"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/content_new_products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/nameProduct"
+        android:layout_width="396dp"
+        android:layout_height="48dp"
+        android:autoText="false"
+        android:gravity="center"
+        android:hint="שם מוצר"
+        android:inputType="textLongMessage"
+        android:textAllCaps="false"
+        android:textColor="#E53935"
+        android:textColorHint="#E53935"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/upload"
+        android:layout_width="414dp"
+        android:layout_height="64dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:popupTheme="@style/Theme.HealthBit.PopupOverlay" />
+
+    <Button
+        android:id="@+id/setP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:text="העלאת פריט חדש"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.836" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
