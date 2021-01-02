@@ -35,15 +35,31 @@
         app:backgroundTint="#B9FFB7CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.739" />
+        app:layout_constraintVertical_bias="0.887" />
+
+    <Button
+        android:id="@+id/main_dailyMenu"
+        android:layout_width="146dp"
+        android:layout_height="71dp"
+        android:background="@drawable/roundbtn"
+        android:drawableLeft="@drawable/ic_menu"
+        android:text="daily menu"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#B9FFB7CF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893" />
 
     <Button
         android:id="@+id/main_tips"
-        android:layout_width="158dp"
-        android:layout_height="64dp"
+        android:layout_width="273dp"
+        android:layout_height="85dp"
         android:background="@drawable/roundbtn"
         android:drawableLeft="@drawable/ic_tips"
         android:text="tips"
@@ -51,26 +67,10 @@
         app:backgroundTint="#B9FFB7CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
-
-    <Button
-        android:id="@+id/main_dailyact"
-        android:layout_width="150dp"
-        android:layout_height="68dp"
-        android:background="@drawable/roundbtn"
-        android:drawableLeft="@drawable/ic_activity"
-        android:text="daily activity"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#B9FFB7CF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+        app:layout_constraintVertical_bias="0.744" />
 
     <Button
         android:id="@+id/main_myprofile"
@@ -147,22 +147,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.099" />
-
-    <Button
-        android:id="@+id/main_dailyMenu"
-        android:layout_width="146dp"
-        android:layout_height="71dp"
-        android:background="@drawable/roundbtn"
-        android:drawableLeft="@drawable/ic_menu"
-        android:text="daily menu"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#B9FFB7CF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.901"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737" />
 
     <Button
         android:id="@+id/updateItem"

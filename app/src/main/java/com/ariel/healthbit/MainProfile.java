@@ -89,16 +89,6 @@ public class MainProfile extends AppCompatActivity
             }
         });
 
-        act = (Button) findViewById(R.id.main_dailyact); //move to the activity main
-        act.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view)
-            {
-                Intent myIntent = new Intent(getApplicationContext(), daily_activity.class);
-                startActivity(myIntent);
-            }
-
-        });
-
         menu = (Button) findViewById(R.id.main_dailyMenu);//move to the daily menu activity
         menu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view)
