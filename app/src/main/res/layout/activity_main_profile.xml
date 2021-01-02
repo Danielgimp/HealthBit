@@ -9,6 +9,22 @@
     tools:context="com.ariel.healthbit.MainProfile">
 
     <Button
+        android:id="@+id/btn_myPurchases"
+        android:layout_width="252dp"
+        android:layout_height="90dp"
+        android:background="@drawable/roundbtn"
+        android:drawableLeft="@drawable/ic_activity"
+        android:text="My Purchases"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#B9FFB7CF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.588" />
+
+    <Button
         android:id="@+id/main_store"
         android:layout_width="149dp"
         android:layout_height="66dp"
@@ -122,7 +138,7 @@
         android:id="@+id/mainprofile_hello"
         android:layout_width="192dp"
         android:layout_height="45dp"
-        android:text="hello"
+        android:text="Hello"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -159,10 +175,10 @@
         app:backgroundTint="#B9FFB7CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.278" />
+        app:layout_constraintVertical_bias="0.217" />
 
     <Button
         android:id="@+id/newItem"
@@ -178,6 +194,6 @@
         app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.41" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
