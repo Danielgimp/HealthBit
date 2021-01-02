@@ -43,27 +43,22 @@
 
         <TextView
             android:id="@+id/cart_OrderId"
-            android:layout_width="285dp"
-            android:layout_height="524dp"
+            android:layout_width="282dp"
+            android:layout_height="51dp"
             android:text="OrderId"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.126"
+            app:layout_constraintHorizontal_bias="0.124"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.584"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:scrollHorizontally="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
+            app:layout_constraintVertical_bias="0.176" />
 
         <Button
-            android:id="@+id/bth_homepage"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Purchase"
+            android:text="Button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.949"
