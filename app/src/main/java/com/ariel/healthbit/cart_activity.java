@@ -23,7 +23,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class cart_activity extends AppCompatActivity {
-
+    /**
+     * This class is representing the Entire Order that the user have made.
+     * First there is a greeting line that Says Hello {User First Name, User Last name}
+     * And than there is filling of the products purchased to the text View.
+     */
     DatabaseReference refCurrentOrder, refProducts,refUpdateProducts,refUser;
     FirebaseAuth fb;
     TextView fullname, orderIdtxt;
@@ -40,6 +44,10 @@ public class cart_activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         fullname = (TextView) findViewById(R.id.HellotxtView);
         orderIdtxt=(TextView) findViewById(R.id.cart_OrderId);
+
+        /**
+         * This is a greeting line that Says Hello {User First Name, User Last name}
+         */
         Order_UID = getIntent().getStringExtra("Unique Order ID");
         refUser= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid());
         ValueEventListener userListener = new ValueEventListener() {
@@ -59,8 +67,10 @@ public class cart_activity extends AppCompatActivity {
         };
         refUser.addValueEventListener(userListener);
 
+        /**
+         * In this section we convert from product UID to a name in a hashmap, this was done so the store could handle same names under different UID's which appears to be very useful.
+         */
         refProducts = FirebaseDatabase.getInstance().getReference("products");
-        String Name="";
         ValueEventListener GetProducts = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -78,6 +88,9 @@ public class cart_activity extends AppCompatActivity {
         };
         refProducts.addValueEventListener(GetProducts);
 
+        /**
+         * This part of the code fills a string with all the required purchase data, and in the end of onDataChange fills this information inside a Text View.
+         */
         refCurrentOrder = FirebaseDatabase.getInstance().getReference("Orders").child(Order_UID);
         ValueEventListener postListener = new ValueEventListener() {
             productOrder order;
@@ -107,6 +120,9 @@ public class cart_activity extends AppCompatActivity {
 
         homebutton=(Button) findViewById(R.id.bth_homepage);
 
+        /**
+         * The below function is updating the database that an order has been fully made and sends the user to the homepage.
+         */
         homebutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view)
             {

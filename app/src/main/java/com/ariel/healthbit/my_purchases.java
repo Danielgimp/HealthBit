@@ -20,6 +20,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This class prints out the orders that the user has made.
+ */
+
 public class my_purchases extends AppCompatActivity {
     DatabaseReference refOrders, refProducts;
     FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -35,6 +39,9 @@ public class my_purchases extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbalWEIGHTTRACKER);
         setSupportActionBar(toolbar);
 
+        /**
+         * In This piece of code we fetch the Order class matching the userUID, to display all (and only) the user orders.
+         */
         refOrders = FirebaseDatabase.getInstance().getReference("Orders");
         refOrders.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -46,6 +53,9 @@ public class my_purchases extends AppCompatActivity {
                         allUserOrders.add(currOrder);
                     }
                 }
+                /**
+                 * In This Part of the code we create a Scroll view including the a single text View to summarise the user orders.
+                 */
                 final LinearLayout lm = (LinearLayout) findViewById(R.id.ll_1);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

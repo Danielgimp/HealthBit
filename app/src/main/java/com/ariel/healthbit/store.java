@@ -26,7 +26,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class store extends AppCompatActivity {
+    /**
+     This class draws what actually is presented in the activity_store, in more detail:
+     this class fetches all storeProducts element from rootDB(Firebase):\\products and displays all the products available for purchase.
+     There is an option to buy the desired product and place a purchase.
 
+     The products are being displayed via Dynamic list of TextViews and Buttons since the store is changing dynamically as well,
+     Further explanation will be provided inside this class about each step of the way.
+     */
     Button gotoCart;
     ArrayList<String> productUID=new ArrayList<String>();
     ArrayList<Double> prices=new ArrayList<Double>();
@@ -43,6 +50,9 @@ public class store extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarSTORE);
         setSupportActionBar(toolbar);
 
+        /**
+         Most of this page actions happens inside the onDataChange scope because of the asynchronous nature of Firebase DB.
+         */
         //add all products from "Store" on Firebase to an array list
         DatabaseReference productsRefernce= FirebaseDatabase.getInstance().getReference("products");
         ValueEventListener postListener = new ValueEventListener() {
@@ -51,28 +61,37 @@ public class store extends AppCompatActivity {
                 Map <String,storeProduct> td= (Map <String,storeProduct>) dataSnapshot.getValue();
                 ArrayList<storeProduct>data=new ArrayList<storeProduct>();
                 storeProduct product;
+                /**
+                 * This for loop fetches all storeProducts from rootDB(Firebase):\\products and places then inside of an arraylist.
+                 * Also there is two Arraylists which are storing products UID and prices chronologically for later use.
+                 */
                 for (Entry <String, storeProduct> entry : td.entrySet()) {
-                    HashMap nana=entry.getValue();
-                    Long LunitsInStock= (Long) nana.get("inStock");
+                    HashMap InnerDataNode=entry.getValue();
+                    Long LunitsInStock= (Long) InnerDataNode.get("inStock");
                     int nitsInStock = LunitsInStock != null ? LunitsInStock.intValue() : -1;
-                    Long Lkcal=(Long) nana.get("Kcal");
-                    int kcal= Lkcal != null ? Lkcal.intValue() : -1;
-                    Long Lprice=(Long) nana.get("price");
-                    double price= Lprice != null ? Lprice.intValue() : -1;
-                    String name= (String) nana.get("name");
-                    String subType= (String) nana.get("description");
+                    String Lkcal = (String) InnerDataNode.get("Kcal").toString();
+                    Double kcal = Double.parseDouble(Lkcal);
+                    Long Lprice=(Long) InnerDataNode.get("price");
+                    double price= Lprice != null ? Lprice.doubleValue() : -1;
+                    String name= (String) InnerDataNode.get("name");
+                    String subType= (String) InnerDataNode.get("description");
                     productUID.add((String) entry.getKey());
                     prices.add(price);
                     product=new storeProduct(name,kcal,price,subType,nitsInStock);
                     data.add(product);
 
                 }
+                /**
+                 * This part of the code creates a dynamic ScrollView of Text Views and Buttons.
+                 * Each storeProducts consists of: Product name,kCal,Price,Description,Current Stock - each of this fields gets every iteration a textView.
+                 * For every product there is also a dynamic creation of buttons.
+                 * In the end of the for loop there is a custom setOnClickListener, which is needed to process the order correctly, this custom listener would be explained below.
+                 */
                 int productsAmount=data.size();
                 final LinearLayout lm = (LinearLayout) findViewById(R.id.linearLayout);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 params.setMargins(0, 0, 0, 50);
-
                 ArrayList<Button> buttons = new ArrayList<Button>();
                 for(int i=0;i<productsAmount;i++)
                 {
@@ -132,6 +151,11 @@ public class store extends AppCompatActivity {
         setOnClick(gotoCart,currOrder);
 
     }
+    /**
+     * This custom OnClickListener is handeling adding items to the cart, for this implementation we needed the following input arguments: the corresponding button of the given product,
+     * The data array list containing all storeProduct and the array containing the Text Views just to update the Stock text in the products details as well as an Order global variable to init Order for later usage.
+     * This custom functions job is to fill a product to an Order class one by one while checking that there is enough quantity.
+     */
     View.OnClickListener handleOnClick(final Button currBtn,ArrayList<storeProduct>data,Order currOrder,ArrayList<TextView> tvIndexes) {
         return new View.OnClickListener() {
             public void onClick(View v) {
@@ -164,6 +188,13 @@ public class store extends AppCompatActivity {
         };
     }
 
+    /**
+     * This custom setOnClick is what actually makes the purchase.
+     * When the User clicks on Go to Cart this function executes and places the order in the DB with all the products selected on Store activity.
+     * The way it works is it sets a mark on the user itself that an order has been made (refUser.setValue("true")), transfers the Unique orderID to the next Activity which is cart,
+     * than it fills all the needed data to the Order class and sends the order to the Database.
+     * After this is done there is an intent that sends the user to the cart.
+     */
     public void setOnClick(final Button btn, final Order currOrder){
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,7 +202,6 @@ public class store extends AppCompatActivity {
                 if(currOrder.getItemQuantity().size()>=1)
                 {
                     refUser= FirebaseDatabase.getInstance().getReference("users").child(fb.getInstance().getUid()).child("Orders").push();
-                    String OrderUID=refUser.getKey();
                     refUser.setValue("true");
                     String orderUID = refUser.getKey();
                     Intent goToCart=new Intent(store.this,cart_activity.class);
